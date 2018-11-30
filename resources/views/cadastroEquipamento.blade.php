@@ -19,93 +19,164 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#activity" data-toggle="tab">Equipamento</a></li>
-        <li><a href="#timeline" data-toggle="tab">Acessórios</a></li>
+        <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li>
         <li><a href="#settings" data-toggle="tab">Movimentações</a></li>
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="activity">
           <!-- Post -->
           <form role="form"  action="/equipamento/salvar" method="post">
-          <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-          <div class="row">
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label>Tombamento:</label>
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>Tombamento:</label>
 
-                <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                </div>
               </div>
-            </div>
-            <div class="col-xs-1">
-              <div class="form-group">
-                <label>Ano:</label>
-                <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask>
+              <div class="col-xs-1">
+                <div class="form-group">
+                  <label>Ano:</label>
+                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask>
+                </div>
               </div>
-            </div>
-            <div class="col-xs-3">
-              <div class="form-group">
-                <label>Número de Série:</label>
+              <div class="col-xs-3">
+                <div class="form-group">
+                  <label>Número de Série:</label>
 
-                <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
-              </div>
+                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                </div>
 
-            </div>
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label>Descrição:</label>
-                <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>Descrição:</label>
+                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label>Localização:</label>
-                <select class="form-control" name="idlocalizacao">
-                  @foreach($localizacoes as $localizacao)
-                  <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
-                  @endforeach
-                </select>
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>Localização:</label>
+                  <select class="form-control" name="idlocalizacao">
+                    @foreach($localizacoes as $localizacao)
+                    <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>Tipo:</label>
+                  <select class="form-control" name="idtipo">
+                    @foreach($tipos as $tipo)
+                    <option value="{{ $tipo->id }}">{{ $tipo->descricao }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <label>Situação:</label>
+                  <select class="form-control" name="idsituacao">
+                    @foreach($situacao as $s)
+                    <option value="{{ $s->id }}">{{ $s->situacao }}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
             </div>
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label>Tipo:</label>
-                <select class="form-control" name="idtipo">
-                  @foreach($tipos as $tipo)
-                  <option value="{{ $tipo->id }}">{{ $tipo->descricao }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <div class="form-group">
-                <label>Situação:</label>
-                <select class="form-control" name="idsituacao">
-                  @foreach($situacao as $s)
-                  <option value="{{ $s->id }}">{{ $s->situacao }}</option>
-                  @endforeach
-                </select>
-              </div>
-            </div>
-          </div>
 
-          <div class="box-footer">
-            <button type="submit" class="btn btn-default">Cancelar</button>
-            <button type="submit" class="btn btn-info pull-right">Salvar</button>
-          </div>
-        </form>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-default">Cancelar</button>
+              <button type="submit" class="btn btn-info pull-right">Salvar</button>
+            </div>
+          </form>
 
         </div>
         <!-- /.tab-pane -->
-        <div class="tab-pane" id="timeline">
+        <div class="tab-pane" id="acessorios">
+          <div class="box">
+            <div class="box-header">
+              <div class="input-group margin">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirAcessorio">Adicionar</button>
+                </span>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table class="table table-hover">
+                <tr>
+                  <th>ID</th>
+                  <th>User</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                </tr>
+                <tr>
+                  <td>183</td>
+                  <td>John Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-success">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>219</td>
+                  <td>Alexander Pierce</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-warning">Pending</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>657</td>
+                  <td>Bob Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-primary">Approved</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+                <tr>
+                  <td>175</td>
+                  <td>Mike Doe</td>
+                  <td>11-7-2014</td>
+                  <td><span class="label label-danger">Denied</span></td>
+                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                </tr>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <!-- Modal -->
+          <div id="inserirAcessorio" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                  <p>Some text in the modal.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
         <!-- /.tab-pane -->
 
         <div class="tab-pane" id="settings">
           <form class="form-horizontal" action="/equipamento/salvar" method="post">
-             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="form-group">
               <label for="inputName" class="col-sm-2 control-label">Name</label>
 
