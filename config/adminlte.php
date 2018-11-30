@@ -129,7 +129,7 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text'        => 'Teste',
+            'text'        => 'Equipamentos',
             'url'         => 'admin/cadastro',
             'icon'        => 'file',
             'label'       => 4,
