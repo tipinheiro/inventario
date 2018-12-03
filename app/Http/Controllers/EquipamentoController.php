@@ -6,6 +6,7 @@ use inventario\Equipamento;
 use inventario\situacao;
 use inventario\localizacao;
 use inventario\tipo_item;
+use inventario\acessorios;
 
 class EquipamentoController extends Controller {
 
@@ -13,12 +14,31 @@ class EquipamentoController extends Controller {
     return view('cadastroEquipamento')
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
+    ->with('acessorios', acessorios::All())
+    ->with('tipos', tipo_item::All());
+  }
+
+  public function editar($id) {
+    $equipamento = Equipamento::find($id);
+    return view('editarEquipamento')
+    ->with('equipamento', $equipamento)
+    ->with('situacao', situacao::All())
+    ->with('localizacoes', localizacao::All())
+    ->with('acessorios', acessorios::All())
     ->with('tipos', tipo_item::All());
   }
 
   public function lista() {
     //return '<h1>listagem de equipamentos</h1>';
-    $equipamentos = DB::select('select * from equipamentos');
+    // $equipamentos = DB::select('select * from equipamentos')
+    $equipamentos = DB::table('equipamentos')
+    ->join('situacaos', 'equipamentos.idsituacao', '=', 'situacaos.id')
+    ->join('localizacaos', 'equipamentos.idlocalizacao', '=', 'localizacaos.id')
+    ->join('tipo_items', 'equipamentos.idtipo_item', '=', 'tipo_items.id')
+    ->select('equipamentos.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
+    ->get();
+
+    // dd($equipamentos);
 
     //return view('user.index', ['users' => $users]);
     return view('listaEquipamento')->with('equipamentos', $equipamentos);
@@ -48,7 +68,20 @@ class EquipamentoController extends Controller {
     $equipamento->idlocalizacao = $request->input('idlocalizacao');
     $equipamento->idsituacao = $request->input('idsituacao');
     $equipamento->save();
-    return redirect()->to('/admin/cadastro');
+    return redirect()->to('/equipamentos');
+  }
+
+  public function atualizar(Request $request, $id) {
+    $equipamento = Equipamento::find($id);
+    $equipamento->tombamento = $request->input('tombamento');
+    $equipamento->ano = $request->input('ano');
+    $equipamento->numero_serie = $request->input('numero_serie');
+    $equipamento->descricao = $request->input('descricao');
+    $equipamento->idtipo_item = $request->input('idtipo');
+    $equipamento->idlocalizacao = $request->input('idlocalizacao');
+    $equipamento->idsituacao = $request->input('idsituacao');
+    $equipamento->update();
+    return redirect()->to('/equipamentos');
   }
 
 }

@@ -41,6 +41,11 @@ class CreateEquipamentosTable extends Migration
       return $this->hasOne('situacao', 'foreign_key', 'idsituacao');
     }
 
+    public function acessorios()
+    {
+      return $this->hasMany('acessorios');
+    }
+
     /**
      * Reverse the migrations.
      *

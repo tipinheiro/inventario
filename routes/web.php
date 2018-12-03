@@ -18,11 +18,19 @@ Route::get('/', function () {
 
 Route::get('/equipamentos', 'EquipamentoController@lista');
 
-Route::get('/admin/cadastro', 'EquipamentoController@cadastroEquipamento');
+Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
 
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
+Route::get('/equipamento/{id}/editar', 'EquipamentoController@editar');
+
 Route::post('/equipamento/salvar', 'EquipamentoController@salvar');
+
+Route::post('/equipamento/{id}/atualizar', 'EquipamentoController@atualizar');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
