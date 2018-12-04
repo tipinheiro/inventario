@@ -126,7 +126,7 @@
                   <td>John Doe</td>
                   <td>11-7-2014</td>
                   <td><span class="label label-success">Approved</span></td>
-                  <td>ATUALIZEI AQUI</td>
+                  <td>ATUALIZEI AQUI NOVAMENTE</td>
                 </tr>
                 <tr>
                   <td>219</td>
