@@ -193,7 +193,6 @@
                       <th>Browser</th>
                       <th>Platform(s)</th>
                       <th>Engine version</th>
-                      <th>kerneldark</th>
                       <th>Status</th>
                     </tr>
                     </tfoot>
