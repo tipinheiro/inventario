@@ -64,7 +64,7 @@
         @endif
       </div>
 
-      <button type="submit">{{ trans('adminlte::adminlte.register') }}</button>
+      <button class="btn-success" type="submit">{{ trans('adminlte::adminlte.register') }}</button>
 
       <div class="auth-links">
         <a href="{{ url(config('adminlte.login_url', 'login')) }}"

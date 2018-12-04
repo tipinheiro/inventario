@@ -41,19 +41,17 @@
         @endif
       </div>
 
-      <button type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
+      <button class="btn-success" type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
 
       @if (config('adminlte.register_url', 'register'))
       <a href="{{ url(config('adminlte.register_url', 'register')) }}">
-        <input type="button" title="Criar Novo Usuário" value="Criar Novo Usuário" />
+        <input type="button" class="btn-warning" title="Criar Novo Usuário" value="Criar Novo Usuário" />
       </a>
       @endif
 
       <label>
         <input type="checkbox" name="remember"> {{ trans('adminlte::adminlte.remember_me') }}
       </label>
-
-      <button title="Cancelar" type="button" onclick="document.getElementById('id01').style.display = 'none'" class="cancelbtn"><b>Cancelar</b></button>
 
       <span class="psw">Esqueceu a <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}">senha?</a></span>
     </div>

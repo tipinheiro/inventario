@@ -199,7 +199,7 @@
                   </table>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
               <!--  end Modal content-->
