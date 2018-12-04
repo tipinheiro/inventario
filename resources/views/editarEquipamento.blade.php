@@ -166,7 +166,7 @@
                 </div>
                 <div class="modal-body">
                   <!-- <p>Some text in the modal.</p> -->
-                  <table id="example1" class="table table-bordered table-hover">
+                  <table id="acessorio_table" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                       <th>Num. Série</th>
@@ -193,7 +193,6 @@
                       <th>Browser</th>
                       <th>Platform(s)</th>
                       <th>Engine version</th>
-                      <th>kerneldark</th>
                       <th>Status</th>
                     </tr>
                     </tfoot>
@@ -311,7 +310,7 @@ $( document ).ready(function() {
 <script lang="javascript">
 $( document ).ready(function() {
 console.log( "ready!" );
-$('#example1').DataTable({
+$('#acessorio_table').DataTable({
 'info'        : false,
 'lengthChange': false,
 "language": {
@@ -330,7 +329,7 @@ $('#example1').DataTable({
 }
 })
 
-$('#example1 tbody').on('dblclick', 'tr', function () {
+$('#acessorio_table tbody').on('dblclick', 'tr', function () {
 var table = $('#example1').DataTable();
 var data = table.row( this ).data();
 alert( 'You clicked on '+data[0]+'\'s row' );
