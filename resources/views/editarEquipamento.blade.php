@@ -20,7 +20,6 @@
         <li class="active"><a href="#activity" data-toggle="tab">Equipamento</a></li>
         <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li>
         <li><a href="#settings" data-toggle="tab">Movimentações</a></li>
-        <li><a href="#tab-pesquisa" data-toggle="tab">Pesquisa</a></li>
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="activity">
@@ -267,83 +266,6 @@
         </div>
         <!-- /.tab-pane -->
 
-        <!-- /.tab-pane -->
-        <div class="tab-pane" id="tab-pesquisa">
-          <div class="box">
-            <div class="box-header">
-              <div class="input-group margin">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirAcessorio">Adicionar</button>
-                </span>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Reason</th>
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          <!-- Modal -->
-          <div id="inserirAcessorio" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                  <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-        <!-- /.tab-pane -->
-
       </div>
       <!-- /.tab-content -->
     </div>
@@ -354,7 +276,7 @@
   <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
+<!-- <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {
   console.log( "ready!" );
@@ -383,12 +305,37 @@ $( document ).ready(function() {
      alert( 'You clicked on '+data[0]+'\'s row' );
   } );
 
-  $("#pesquisa").click(function(){
-    console.log('pesquisa clicked.');
-    //$("#pessquisa").attr('active');
-    $('.nav-tabs a[href="#tab-pesquisa"]').tab('show');
-    //window.location("pesquisa");
-  });
+});
+</script> -->
+<script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
+<script lang="javascript">
+$( document ).ready(function() {
+console.log( "ready!" );
+$('#example1').DataTable({
+'info'        : false,
+'lengthChange': false,
+"language": {
+"lengthMenu": "Display _MENU_ records per page",
+"zeroRecords": "Nothing found - sorry",
+"info": "Showing page _PAGE_ of _PAGES_",
+"infoEmpty": "No records available",
+"search": "Busca",
+"infoFiltered": "(filtered from _MAX_ total records)",
+"paginate": {
+"first":      "Primeiro",
+"last":       "Último",
+"next":       "Próximo",
+"previous":   "Anterior"
+}
+}
+})
+
+$('#example1 tbody').on('dblclick', 'tr', function () {
+var table = $('#example1').DataTable();
+var data = table.row( this ).data();
+alert( 'You clicked on '+data[0]+'\'s row' );
+} );
+
 });
 </script>
 @endif
