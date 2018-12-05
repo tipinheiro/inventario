@@ -13,7 +13,7 @@
 
   {!! csrf_field() !!}
   <div class="imgcontainer">
-    <img src="/svg/140.png" alt="Avatar" class="avatar"><br>
+    <img src="/svg/inventario.png" alt="Avatar" class="avatar"><br>
     <div>
       <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
     </div>

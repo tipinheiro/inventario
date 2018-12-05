@@ -13,9 +13,11 @@
 <form class="modal-content animate" action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
   {!! csrf_field() !!}
   <div class="imgcontainer">
-    <img src="/svg/inventario.png" alt="Avatar" class="avatar"><br>
+    <img src="/svg/140.png" alt="Avatar" class="avatar"><br>
+    <div>
       <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
-      <p {{ trans('adminlte::adminlte.login_message') }}</p>
+    </div>
+    <p {{ trans('adminlte::adminlte.login_message') }}</p>
     </div>
 
     <div class="container form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
@@ -45,7 +47,7 @@
 
       @if (config('adminlte.register_url', 'register'))
       <a href="{{ url(config('adminlte.register_url', 'register')) }}">
-        <input type="button" class="btn-warning" title="Criar Novo Usuário" value="Criar Novo Usuário" />
+        <input type="button" class="btn-info" title="Criar Novo Usuário" value="Criar Novo Usuário" />
       </a>
       @endif
 
