@@ -14,8 +14,8 @@
   {!! csrf_field() !!}
   <div class="imgcontainer">
     <img src="/svg/inventario.png" alt="Avatar" class="avatar"><br>
-    <div>
-      <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+    <div class="login-logo">
+      <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>UFMA</b>Inventário') !!}</a>
     </div>
     <p {{ trans('adminlte::adminlte.login_message') }}</p>
     </div>
