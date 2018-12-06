@@ -76,13 +76,11 @@
               </div>
             </div>
 
-            <div class="box-footer">
-
               <div class="box-footer">
                 <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Atualizar</button>
               </div>
-            </div>
+
             <!-- box-footer  -->
           </form>
 

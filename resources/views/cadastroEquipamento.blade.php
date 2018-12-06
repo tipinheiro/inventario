@@ -92,14 +92,11 @@
                 </div>
               </div>
             </div>
-
-            <div class="box-footer">
-
               <div class="box-footer">
                   <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Salvar</button>
               </div>
-            </div>
+
             <!-- box-footer  -->
           </form>
 

@@ -10,14 +10,14 @@
 @if (Route::has('login'))
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title">Cadastro de Acessorio</h3>
+    <h3 class="box-title">Cadastro de Acessório</h3>
   </div>
   <div class="box-body">
 
     <!--start tab-->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab">Acessorio</a></li>
+        <li class="active"><a href="#activity" data-toggle="tab">Acessório</a></li>
         <!-- <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li> -->
         <!-- <li><a href="#settings" data-toggle="tab">Movimentações</a></li> -->
         <!-- <li><a href="#tab-pesquisa" data-toggle="tab">Pesquisa</a></li> -->
@@ -82,11 +82,8 @@
             </div>
 
             <div class="box-footer">
-
-              <div class="box-footer">
-                  <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
+                <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Salvar</button>
-              </div>
             </div>
             <!-- box-footer  -->
           </form>

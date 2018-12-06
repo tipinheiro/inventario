@@ -90,13 +90,11 @@
               </div>
             </div>
 
-            <div class="box-footer">
-
               <div class="box-footer">
                 <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Atualizar</button>
               </div>
-            </div>
+
             <!-- box-footer  -->
           </form>
 
@@ -163,7 +161,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
+                  <h4 class="modal-title">Acessórios</h4>
                 </div>
                 <div class="modal-body">
                   <!-- <p>Some text in the modal.</p> -->
