@@ -10,14 +10,14 @@
 @if (Route::has('login'))
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title">Cadastro de Equipamento</h3>
+    <h3 class="box-title">Cadastro de Acessorio</h3>
   </div>
   <div class="box-body">
 
     <!--start tab-->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab">Equipamento</a></li>
+        <li class="active"><a href="#activity" data-toggle="tab">Acessorio</a></li>
         <!-- <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li> -->
         <!-- <li><a href="#settings" data-toggle="tab">Movimentações</a></li> -->
         <!-- <li><a href="#tab-pesquisa" data-toggle="tab">Pesquisa</a></li> -->
@@ -25,22 +25,10 @@
       <div class="tab-content">
         <div class="active tab-pane" id="activity">
           <!-- Post -->
-          <form role="form"  action="/equipamento/salvar" method="post">
+          <form role="form"  action="/acessorio/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
-                </div>
-              </div>
-              <div class="col-xs-1">
-                <div class="form-group">
-                  <label>Ano:</label>
-                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask required>
-                </div>
-              </div>
               <div class="col-xs-3">
                 <div class="form-group">
                   <label>Número de Série:</label>
@@ -96,7 +84,7 @@
             <div class="box-footer">
 
               <div class="box-footer">
-                  <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
+                  <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Salvar</button>
               </div>
             </div>

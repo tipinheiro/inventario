@@ -27,7 +27,7 @@
                     @endif
                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
                     <input type="email" name="email" value="{{ isset($email) ? $email : old('email') }}"
-                           placeholder="{{ trans('adminlte::adminlte.email') }}">
+                           placeholder="{{ trans('adminlte::adminlte.email') }}" required>
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @if ($errors->has('email'))
                         <span class="help-block">
@@ -35,7 +35,7 @@
                         </span>
                     @endif
                 </div>
-                <button type="submit"
+                <button  title="Enviar link de recuperação de senha" type="submit"
                         class="btn-info"
                 >{{ trans('adminlte::adminlte.send_password_reset_link') }}</button>
               </div>

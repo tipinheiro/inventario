@@ -17,12 +17,12 @@ use Route;
   <div class="box-header with-border">
     <div class="row">
       <div class="col-xs-9">
-    <h3 class="box-title">Equipamentos</h3>
+    <h3 class="box-title">Acessórios</h3>
   </div>
   <div class="col-xs-2">
 <!-- <button type="button" class="btn btn-block btn-success btn-sm">Novo</button> -->
 <!-- <a href=/equipamento><button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-fw fa-plus box-title"></i>Novo</button></a> -->
-<h3 class="box-title pull-right"><a href=/equipamento><i class="fa fa-fw fa-plus">Novo</i></a></h3>
+<h3 class="box-title pull-right"><a href=/acessorio><i class="fa fa-fw fa-plus">Novo</i></a></h3>
 </div>
   </div>
   </div>
@@ -39,7 +39,6 @@ use Route;
                 <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Tombamento</th>
                   <th>Num. Série</th>
                   <th>Descrição</th>
                   <th>Tipo</th>
@@ -48,15 +47,14 @@ use Route;
                 </tr>
                 </thead>
                 <tbody>
-                  @foreach($equipamentos as $equipamento)
+                  @foreach($acessorios as $acessorio)
                   <tr>
-                    <td>{{ $equipamento->id }}</td>
-                    <td>{{ $equipamento->tombamento }}</td>
-                    <td>{{ $equipamento->numero_serie }}</td>
-                    <td>{{ $equipamento->descricao }}</td>
-                    <td>{{ $equipamento->tipoitem }}</td>
-                    <td>{{ $equipamento->localizacao }}</td>
-                    <td>{{ $equipamento->situacao }}</td>
+                    <td>{{ $acessorio->id }}</td>
+                    <td>{{ $acessorio->numero_serie }}</td>
+                    <td>{{ $acessorio->descricao }}</td>
+                    <td>{{ $acessorio->tipoitem }}</td>
+                    <td>{{ $acessorio->localizacao }}</td>
+                    <td>{{ $acessorio->situacao }}</td>
                   </tr>
                   @endforeach
                 </tbody>
@@ -67,7 +65,6 @@ use Route;
                   <th>Platform(s)</th>
                   <th>Engine version</th>
                   <th>CSS grade</th>
-                  <th>kerneldark</th>
                   <th>Status</th>
                 </tr>
                 </tfoot>
@@ -112,7 +109,7 @@ use Route;
        var table = $('#example1').DataTable();
        var data = table.row( this ).data();
        //alert( 'You clicked on '+data[0]+'\'s row' );
-       window.location.href = "/equipamento/"+data[0]+"/editar";
+       window.location.href = "/acessorio/"+data[0]+"/editar";
     } );
   })
 </script>

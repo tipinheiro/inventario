@@ -10,48 +10,34 @@
 @if (Route::has('login'))
 <div class="box box-info">
   <div class="box-header with-border">
-    <h3 class="box-title">Editar Equipamento</h3>
+    <h3 class="box-title">Editar Acessórios</h3>
   </div>
   <div class="box-body">
 
     <!--start tab-->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab">Equipamento</a></li>
-        <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li>
-        <li><a href="#settings" data-toggle="tab">Movimentações</a></li>
-      </ul>
+        <li class="active"><a href="#activity" data-toggle="tab">Acessórios</a></li>
+            </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="activity">
           <!-- Post -->
-          <form role="form"  action="/equipamento/{{ $equipamento->id }}/atualizar" method="post">
+          <form role="form"  action="/acessorio/{{ $acessorio->id }}/atualizar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->tombamento }}">
-                </div>
-              </div>
-              <div class="col-xs-1">
-                <div class="form-group">
-                  <label>Ano:</label>
-                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask value="{{ $equipamento->ano }}">
-                </div>
-              </div>
               <div class="col-xs-3">
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->numero_serie }}">
+                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $acessorio->numero_serie }}">
                 </div>
 
               </div>
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->descricao }}">
+                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $acessorio->descricao }}">
                 </div>
               </div>
             </div>
@@ -62,7 +48,7 @@
                   <label>Localização:</label>
                   <select class="form-control" name="idlocalizacao">
                     @foreach($localizacoes as $localizacao)
-                    <option value="{{ $localizacao->id }}" @if($localizacao->id == $equipamento->idlocalizacao) selected="selected" @endif>{{ $localizacao->localizacao }}</option>
+                    <option value="{{ $localizacao->id }}" @if($localizacao->id == $acessorio->localizacaos_id) selected="selected" @endif>{{ $localizacao->localizacao }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -72,7 +58,7 @@
                   <label>Tipo:</label>
                   <select class="form-control" name="idtipo">
                     @foreach($tipos as $tipo)
-                    <option value="{{ $tipo->id }}" @if($tipo->id == $equipamento->idtipo_item) selected="selected" @endif>{{ $tipo->descricao }}</option>
+                    <option value="{{ $tipo->id }}" @if($tipo->id == $acessorio->tipo_items_id) selected="selected" @endif>{{ $tipo->descricao }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -83,7 +69,7 @@
                   <select class="form-control" name="idsituacao">
 
                     @foreach($situacao as $s)
-                    <option value="{{ $s->id }}"@if($s->id == $equipamento->idsituacao) selected="selected" @endif>{{ $s->situacao }}</option>
+                    <option value="{{ $s->id }}"@if($s->id == $acessorio->situacaos_id) selected="selected" @endif>{{ $s->situacao }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -93,7 +79,7 @@
             <div class="box-footer">
 
               <div class="box-footer">
-                <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
+                <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Atualizar</button>
               </div>
             </div>
@@ -178,15 +164,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                      @foreach($acessorios as $acessorio)
+
                       <tr>
                         <td>{{ $acessorio->numero_serie }}</td>
                         <td>{{ $acessorio->descricao }}</td>
-                        <td>{{ $acessorio->tipos_item_id }}</td>
-                        <td>{{ $acessorio->localizacao_id }}</td>
-                        <td>{{ $acessorio->idsituacao }}</td>
+                        <td>{{ $acessorio->tipo_items_id }}</td>
+                        <td>{{ $acessorio->localizacaos_id }}</td>
+                        <td>{{ $acessorio->situacao_id }}</td>
                       </tr>
-                      @endforeach
+
                     </tbody>
                     <tfoot>
                     <tr>
@@ -210,58 +196,6 @@
         </div>
         <!-- /.tab-pane -->
 
-        <div class="tab-pane" id="settings">
-
-
-          <div class="box-body">
-              <div class="box">
-                <!--
-                    <div class="box-header">
-                      <h3 class="box-title">Data Table With Full Features</h3>
-                    </div>
-                    -->
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                      <table id="example1" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Tombamento</th>
-                          <th>Num. Série</th>
-                          <th>Descrição</th>
-                          <th>Tipo</th>
-                          <th>Data de Cadastro</th>
-                          <th>Ultima Movimentação</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{{ $equipamento->id }}</td>
-                            <td>{{ $equipamento->tombamento }}</td>
-                            <td>{{ $equipamento->numero_serie }}</td>
-                            <td>{{ $equipamento->descricao }}</td>
-                            <td>{{ $equipamento->idtipo_item }}</td>
-                            <td>{{ $equipamento->created_at }}</td>
-                            <td>{{ $equipamento->updated_at}}</td>
-                          </tr>
-                          </tbody>
-                        <tfoot>
-                        <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
-                          <th>kerneldark</th>
-                          <th>Status</th>
-                        </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                    <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-                </div>
 
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">

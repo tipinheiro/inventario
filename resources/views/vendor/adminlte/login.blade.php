@@ -23,7 +23,7 @@
     <div class="container form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
       <label for="uname"><b>Usuário</b></label>
       <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-        <input type="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('adminlte::adminlte.email') }}">
+        <input type="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('adminlte::adminlte.email') }}" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
         <span class="help-block">
@@ -32,9 +32,9 @@
         @endif
       </div>
 
-      <label for="psw"><b>Senha</b></label>
+      <label><b>Senha</b></label>
       <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-        <input type="password" name="password" placeholder="{{ trans('adminlte::adminlte.password') }}">
+        <input type="password" name="password" placeholder="{{ trans('adminlte::adminlte.password') }}"required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
         <span class="help-block">
@@ -43,7 +43,7 @@
         @endif
       </div>
 
-      <button class="btn-success" type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
+      <button class="btn-success" title="Entrar" type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
 
       @if (config('adminlte.register_url', 'register'))
       <a href="{{ url(config('adminlte.register_url', 'register')) }}">
