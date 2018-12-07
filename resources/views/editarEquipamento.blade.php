@@ -92,10 +92,10 @@
               </div>
             </div>
 
-              <div class="box-footer">
-                <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
-                <button type="submit" class="btn btn-info pull-right">Atualizar</button>
-              </div>
+            <div class="box-footer">
+              <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
+              <button type="submit" class="btn btn-info pull-right">Atualizar</button>
+            </div>
 
             <!-- box-footer  -->
           </form>
@@ -115,203 +115,265 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <!-- <table class="table table-hover" id="teste">
-                <tr>
-                  <th>Número de Série</th>
-                  <th>Descrição</th>
-                  <th>Tipo</th>
-                  <th>Localização</th>
-                  <th>Status</th>
-                </tr>
-                <tr>
-                  @foreach($associados as $associado)
-                  <tr>
-                    <td>{{ $associado->numero_serie }}</td>
-                    <td>{{ $associado->descricao }}</td>
-                    <td>{{ $associado->tipo_items_id }}</td>
-                    <td>{{ $associado->localizacaos_id }}</td>
-                    <td>{{ $associado->situacaos_id }}</td>
-                  </tr>
-                  @endforeach
-                </tr>
-                </table> -->
-                <table class="table table-hover" id="teste">
-                </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          <!-- Modal -->
-          <div id="inserirAcessorio" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+              <tr>
+              <th>Número de Série</th>
+              <th>Descrição</th>
+              <th>Tipo</th>
+              <th>Localização</th>
+              <th>Status</th>
+            </tr>
+            <tr>
+            @foreach($associados as $associado)
+            <tr>
+            <td>{{ $associado->numero_serie }}</td>
+            <td>{{ $associado->descricao }}</td>
+            <td>{{ $associado->tipo_items_id }}</td>
+            <td>{{ $associado->localizacaos_id }}</td>
+            <td>{{ $associado->situacaos_id }}</td>
+          </tr>
+          @endforeach
+        </tr>
+      </table> -->
+      <table class="table table-hover" id="teste">
+        <thead>
+						<tr>
+							<th>numero_serie</th>
+							<th>tipo_items_id</th>
+							<th>equipamentos_id</th>
+							<th>descricao</th>
+							<th>localizacaos_id</th>
+							<th>situacaos_id</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+              <th>numero_serie</th>
+              <th>tipo_items_id</th>
+              <th>equipamentos_id</th>
+              <th>descricao</th>
+              <th>localizacaos_id</th>
+              <th>situacaos_id</th>
+						</tr>
+					</tfoot>
+      </table>
+    </div>
+    <!-- /.box-body -->
+  </div>
+  <!-- /.box -->
+  <!-- Modal -->
+  <div id="inserirAcessorio" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Acessórios</h4>
-                </div>
-                <div class="modal-body" >
-                  <!-- <p>Some text in the modal.</p> -->
-                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
-                    <thead>
-                    <tr>
-                      <th>Num. Série</th>
-                      <th>Descrição</th>
-                      <th>Tipo</th>
-                      <th>Localização</th>
-                      <th>Situação</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($acessorios as $acessorio)
-                      <tr>
-                        <td>{{ $acessorio->numero_serie }}</td>
-                        <td>{{ $acessorio->descricao }}</td>
-                        <td>{{ $acessorio->tipo_items_id }}</td>
-                        <td>{{ $acessorio->localizacaos_id }}</td>
-                        <td>{{ $acessorio->situacaos_id }}</td>
-                      </tr>
-                      @endforeach
-                    </tbody>
-                    <tfoot>
-                    <tr>
-                      <th>Rendering engine</th>
-                      <th>Browser</th>
-                      <th>Platform(s)</th>
-                      <th>Engine version</th>
-                      <th>Status</th>
-                    </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-                </div>
-              </div>
-              <!--  end Modal content-->
-
-            </div>
-          </div>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Acessórios</h4>
         </div>
-        <!-- /.tab-pane -->
+        <div class="modal-body" >
+          <!-- <p>Some text in the modal.</p> -->
+          <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+            <thead>
+              <tr>
+                <th>Num. Série</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Localização</th>
+                <th>Situação</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($acessorios as $acessorio)
+              <tr>
+                <td>{{ $acessorio->numero_serie }}</td>
+                <td>{{ $acessorio->descricao }}</td>
+                <td>{{ $acessorio->tipo_items_id }}</td>
+                <td>{{ $acessorio->localizacaos_id }}</td>
+                <td>{{ $acessorio->situacaos_id }}</td>
+              </tr>
+              @endforeach
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+                <th>Engine version</th>
+                <th>Status</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      <!--  end Modal content-->
 
-        <div class="tab-pane" id="settings">
+    </div>
+  </div>
+</div>
+<!-- /.tab-pane -->
+
+<div class="tab-pane" id="settings">
 
 
-          <div class="box-body">
-              <div class="box">
-                <!--
-                    <div class="box-header">
-                      <h3 class="box-title">Data Table With Full Features</h3>
-                    </div>
-                    -->
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                      <table id="tabela_movimentacoes" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Tombamento</th>
-                          <th>Num. Série</th>
-                          <th>Descrição</th>
-                          <th>Tipo</th>
-                          <th>Data de Cadastro</th>
-                          <th>Ultima Movimentação</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{{ $equipamento->id }}</td>
-                            <td>{{ $equipamento->tombamento }}</td>
-                            <td>{{ $equipamento->numero_serie }}</td>
-                            <td>{{ $equipamento->descricao }}</td>
-                            <td>{{ $equipamento->idtipo_item }}</td>
-                            <td>{{ $equipamento->created_at }}</td>
-                            <td>{{ $equipamento->updated_at}}</td>
-                          </tr>
-                          </tbody>
-                        <tfoot>
-                        <tr>
-                          <th>Rendering engine</th>
-                          <th>Browser</th>
-                          <th>Platform(s)</th>
-                          <th>Engine version</th>
-                          <th>CSS grade</th>
-                          <th>kerneldark</th>
-                          <th>Status</th>
-                        </tr>
-                        </tfoot>
-                      </table>
-                    </div>
-                    <!-- /.box-body -->
-                  </div>
-                  <!-- /.box -->
-                </div>
+  <div class="box-body">
+    <div class="box">
+      <!--
+      <div class="box-header">
+      <h3 class="box-title">Data Table With Full Features</h3>
+    </div>
+  -->
+  <!-- /.box-header -->
+  <div class="box-body">
+    <table id="tabela_movimentacoes" class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tombamento</th>
+          <th>Num. Série</th>
+          <th>Descrição</th>
+          <th>Tipo</th>
+          <th>Data de Cadastro</th>
+          <th>Ultima Movimentação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $equipamento->id }}</td>
+          <td>{{ $equipamento->tombamento }}</td>
+          <td>{{ $equipamento->numero_serie }}</td>
+          <td>{{ $equipamento->descricao }}</td>
+          <td>{{ $equipamento->idtipo_item }}</td>
+          <td>{{ $equipamento->created_at }}</td>
+          <td>{{ $equipamento->updated_at}}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>Rendering engine</th>
+          <th>Browser</th>
+          <th>Platform(s)</th>
+          <th>Engine version</th>
+          <th>CSS grade</th>
+          <th>kerneldark</th>
+          <th>Status</th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /.box -->
+</div>
 
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {
 
-var equipamentos_id = $('#idequipamento').val();
+  var equipamentos_id = $('#idequipamento').val();
+
+  // $('#teste').DataTable({
+  //   'info'        : false,
+  //   'lengthChange': false,
+  //   "language": {
+  //     "lengthMenu": "Display _MENU_ records per page",
+  //     "zeroRecords": "Nothing found - sorry",
+  //     "info": "Showing page _PAGE_ of _PAGES_",
+  //     "infoEmpty": "No records available",
+  //     "search": "Busca",
+  //     "infoFiltered": "(filtered from _MAX_ total records)",
+  //     "paginate": {
+  //       "first":      "Primeiro",
+  //       "last":       "Último",
+  //       "next":       "Próximo",
+  //       "previous":   "Anterior"
+  //     }
+  //   },
+  //   "ajax": "/acessorio/4/associados",
+  //   "columns": [
+  //     { "data": "numero_serie" },
+  //     { "data": "tipo_items_id" },
+  //     { "data": "equipamentos_id" },
+  //     { "data": "descricao" },
+  //     { "data": "localizacaos_id" },
+  //     { "data": "situacaos_id" }
+  //   ]
+  //
+  // });
+  //
   $('#teste').DataTable( {
-      ajax: 'acessorio/4/associados'
-  })
-// console.log( "ready!" );
-$('#example1').DataTable({
-'info'        : false,
-'lengthChange': false,
-"language": {
-"lengthMenu": "Display _MENU_ records per page",
-"zeroRecords": "Nothing found - sorry",
-"info": "Showing page _PAGE_ of _PAGES_",
-"infoEmpty": "No records available",
-"search": "Busca",
-"infoFiltered": "(filtered from _MAX_ total records)",
-"paginate": {
-"first":      "Primeiro",
-"last":       "Último",
-"next":       "Próximo",
-"previous":   "Anterior"
-}
-}
-})
+    "ajax": "/acessorio/4/associados",
+    "columns": [
+      { "data": "numero_serie" },
+      { "data": "tipo_items_id" },
+      { "data": "equipamentos_id" },
+      { "data": "descricao" },
+      { "data": "localizacaos_id" },
+      { "data": "situacaos_id" }
+    ]
+  } );
 
-
-
-/*
-$('#example1 tbody').on('click', 'tr', function () {
-
-var table = $('#example1').DataTable();
-var data = table.row( this ).data();
-document.getElementById('numserie').innerHTML=data[0];
-document.getElementById('numserie').id='';
-document.getElementById('descricao').innerHTML=data[1];
-document.getElementById('descricao').id='';
-document.getElementById('tipo').innerHTML=data[2];
-document.getElementById('tipo').id='';
-document.getElementById('localizacao').innerHTML=data[3];
-document.getElementById('localizacao').id='';
-document.getElementById('status').innerHTML=data[4];
-document.getElementById('status').id='';
-
-$('#teste tbody').append(
-          "<tr>"+
-          "<td id='numserie'></td>"+
-          "<td id='descricao'></td>"+
-          "<td id='tipo'></td>"+
-          "<td id='localizacao'></td>"+
-          "<td id='status'></td>"+
-          "</tr>");
-
-*/
-
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  // $('#teste').DataTable( {
+  //     ajax: 'acessorio/4/associados'
+  // });
+  // console.log( "ready!" );
+  $('#example1').DataTable({
+    'info'        : false,
+    'lengthChange': false,
+    "language": {
+      "lengthMenu": "Display _MENU_ records per page",
+      "zeroRecords": "Nothing found - sorry",
+      "info": "Showing page _PAGE_ of _PAGES_",
+      "infoEmpty": "No records available",
+      "search": "Busca",
+      "infoFiltered": "(filtered from _MAX_ total records)",
+      "paginate": {
+        "first":      "Primeiro",
+        "last":       "Último",
+        "next":       "Próximo",
+        "previous":   "Anterior"
+      }
     }
-});
+  });
 
-$('#example1 tbody').on('click', 'tr', function () {
+
+
+  /*
+  $('#example1 tbody').on('click', 'tr', function () {
+
+  var table = $('#example1').DataTable();
+  var data = table.row( this ).data();
+  document.getElementById('numserie').innerHTML=data[0];
+  document.getElementById('numserie').id='';
+  document.getElementById('descricao').innerHTML=data[1];
+  document.getElementById('descricao').id='';
+  document.getElementById('tipo').innerHTML=data[2];
+  document.getElementById('tipo').id='';
+  document.getElementById('localizacao').innerHTML=data[3];
+  document.getElementById('localizacao').id='';
+  document.getElementById('status').innerHTML=data[4];
+  document.getElementById('status').id='';
+
+  $('#teste tbody').append(
+  "<tr>"+
+  "<td id='numserie'></td>"+
+  "<td id='descricao'></td>"+
+  "<td id='tipo'></td>"+
+  "<td id='localizacao'></td>"+
+  "<td id='status'></td>"+
+  "</tr>");
+
+  */
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  $('#example1 tbody').on('click', 'tr', function () {
     console.log('clicou');
     // $('#teste').DataTable( {
     //     var equipamentos_id = $('#idequipamento').val();
@@ -326,18 +388,18 @@ $('#example1 tbody').on('click', 'tr', function () {
     var equipamentos_id = $('#idequipamento').val();
 
     $.ajax({
-        url: '/acessorio/associar',
-        type: 'POST',
-        // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
-        data: {id: id, equipamentos_id: equipamentos_id},
-        dataType: 'html',
-        success: function (e) {
-            console.log(e);
-        }
+      url: '/acessorio/associar',
+      type: 'POST',
+      // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
+      data: {id: id, equipamentos_id: equipamentos_id},
+      dataType: 'html',
+      success: function (e) {
+        console.log(e);
+      }
     });
-});
+  });
 
-//alert( 'You clicked on '+data[0]+'\'s row' );
+  //alert( 'You clicked on '+data[0]+'\'s row' );
 } );
 
 // });
