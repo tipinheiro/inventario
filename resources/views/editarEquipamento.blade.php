@@ -8,6 +8,7 @@
 
 @section('content')
 @if (Route::has('login'))
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="box box-info">
   <div class="box-header with-border">
     <h3 class="box-title">Editar Equipamento</h3>
@@ -26,6 +27,7 @@
           <!-- Post -->
           <form role="form"  action="/equipamento/{{ $equipamento->id }}/atualizar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <input id="idequipamento" type="hidden" name="idequipamento" value="{{{ $equipamento->id }}}" />
             <div class="row">
               <div class="col-xs-4">
                 <div class="form-group">
@@ -112,7 +114,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover" id="teste">
+              <!-- <table class="table table-hover" id="teste">
                 <tr>
                   <th>Número de Série</th>
                   <th>Descrição</th>
@@ -121,12 +123,18 @@
                   <th>Status</th>
                 </tr>
                 <tr>
-                  <td id="numserie"></td>
-                  <td id="descricao"></td>
-                  <td id="tipo"></td>
-                  <td id="localizacao"></td>
-                  <td id="status"></td>
+                  @foreach($associados as $associado)
+                  <tr>
+                    <td>{{ $associado->numero_serie }}</td>
+                    <td>{{ $associado->descricao }}</td>
+                    <td>{{ $associado->tipo_items_id }}</td>
+                    <td>{{ $associado->localizacaos_id }}</td>
+                    <td>{{ $associado->situacaos_id }}</td>
+                  </tr>
+                  @endforeach
                 </tr>
+                </table> -->
+                <table class="table table-hover" id="teste">
                 </table>
             </div>
             <!-- /.box-body -->
@@ -144,11 +152,7 @@
                 </div>
                 <div class="modal-body" >
                   <!-- <p>Some text in the modal.</p> -->
-<<<<<<< HEAD
-                  <table id="acessorio_table" class="table table-bordered table-hover">
-=======
                   <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
->>>>>>> c94d1c70fae60aa545c7b940e08bd2e0074e3a65
                     <thead>
                     <tr>
                       <th>Num. Série</th>
@@ -163,9 +167,9 @@
                       <tr>
                         <td>{{ $acessorio->numero_serie }}</td>
                         <td>{{ $acessorio->descricao }}</td>
-                        <td>{{ $acessorio->tipos_item_id }}</td>
-                        <td>{{ $acessorio->localizacao_id }}</td>
-                        <td>{{ $acessorio->idsituacao }}</td>
+                        <td>{{ $acessorio->tipo_items_id }}</td>
+                        <td>{{ $acessorio->localizacaos_id }}</td>
+                        <td>{{ $acessorio->situacaos_id }}</td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -203,7 +207,7 @@
                     -->
                     <!-- /.box-header -->
                     <div class="box-body">
-                      <table id="example1" class="table table-bordered table-striped">
+                      <table id="tabela_movimentacoes" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                           <th>ID</th>
@@ -247,8 +251,13 @@
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {
-console.log( "ready!" );
-$('#acessorio_table').DataTable({
+
+var equipamentos_id = $('#idequipamento').val();
+  $('#teste').DataTable( {
+      ajax: 'acessorio/4/associados'
+  })
+// console.log( "ready!" );
+$('#example1').DataTable({
 'info'        : false,
 'lengthChange': false,
 "language": {
@@ -267,11 +276,11 @@ $('#acessorio_table').DataTable({
 }
 })
 
-<<<<<<< HEAD
-$('#acessorio_table tbody').on('dblclick', 'tr', function () {
-=======
+
+
+/*
 $('#example1 tbody').on('click', 'tr', function () {
->>>>>>> c94d1c70fae60aa545c7b940e08bd2e0074e3a65
+
 var table = $('#example1').DataTable();
 var data = table.row( this ).data();
 document.getElementById('numserie').innerHTML=data[0];
@@ -294,11 +303,44 @@ $('#teste tbody').append(
           "<td id='status'></td>"+
           "</tr>");
 
+*/
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$('#example1 tbody').on('click', 'tr', function () {
+    console.log('clicou');
+    // $('#teste').DataTable( {
+    //     var equipamentos_id = $('#idequipamento').val();
+    //     ajax: 'acessorio/4/associados'
+    // } );
+    var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    var table = $('#example1').DataTable();
+    var data = table.row( this ).data();
+
+    // document.getElementById('numserie').innerHTML=data[0]
+    var id = data[0];
+    var equipamentos_id = $('#idequipamento').val();
+
+    $.ajax({
+        url: '/acessorio/associar',
+        type: 'POST',
+        // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
+        data: {id: id, equipamentos_id: equipamentos_id},
+        dataType: 'html',
+        success: function (e) {
+            console.log(e);
+        }
+    });
+});
 
 //alert( 'You clicked on '+data[0]+'\'s row' );
 } );
 
-});
+// });
 </script>
 @endif
 @stop

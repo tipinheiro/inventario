@@ -6,6 +6,8 @@ use inventario\situacao;
 use inventario\localizacao;
 use inventario\tipo_item;
 use inventario\acessorios;
+// use inventario\Http\Controllers\Response;
+use Response;
 
 class AcessorioController extends Controller {
 
@@ -75,6 +77,30 @@ class AcessorioController extends Controller {
     $acessorio->situacaos_id = $request->input('idsituacao');
     $acessorio->update();
     return redirect()->to('/acessorios');
+  }
+
+  public function associar(Request $request) {
+    $data = $request->json()->all();
+    // $acessorio = acessorios::find($data['id']);
+    // $acessorio->equipamentos_id = $data['equipamentos_id'];
+    $acessorio = acessorios::find($request->input('id'));
+    $acessorio->equipamentos_id = $request->input('equipamentos_id');
+    $acessorio->update();
+    //return Response::json('ok');
+    return 'ok';
+  }
+
+  public function associados($id) {
+    $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
+    return Response::json($associados);
+    // $data = $request->json()->all();
+    // $acessorio = acessorios::find($data['id']);
+    // $acessorio->equipamentos_id = $data['equipamentos_id'];
+    // $acessorio = acessorios::find($request->input('id'));
+    // $acessorio->equipamentos_id = $request->input('equipamentos_id');
+    // $acessorio->update();
+    //return Response::json('ok');
+    // return 'ok';
   }
 
 }

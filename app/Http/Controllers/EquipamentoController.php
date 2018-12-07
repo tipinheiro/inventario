@@ -20,11 +20,14 @@ class EquipamentoController extends Controller {
 
   public function editar($id) {
     $equipamento = Equipamento::find($id);
+    // $associados = DB::table('acessorios')->where('equipamentos_id', '=' $id);
+    $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
     return view('editarEquipamento')
     ->with('equipamento', $equipamento)
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
     ->with('acessorios', acessorios::All())
+    ->with('associados', $associados)
     ->with('tipos', tipo_item::All());
   }
 

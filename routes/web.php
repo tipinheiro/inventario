@@ -22,7 +22,11 @@ Route::get('/acessorios', 'AcessorioController@lista');
 
 Route::get('/acessorio/{id}/editar', 'AcessorioController@editar');
 
+Route::get('/acessorio/{id}/associados', 'AcessorioController@associados');
+
 Route::post('/acessorio/salvar', 'AcessorioController@salvar');
+
+Route::post('/acessorio/associar', 'AcessorioController@associar');
 
 Route::post('/acessorio/{id}/atualizar', 'AcessorioController@atualizar');
 
