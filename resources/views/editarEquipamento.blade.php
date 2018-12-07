@@ -112,43 +112,22 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" id="teste">
                 <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
+                  <th>Número de Série</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Localização</th>
                   <th>Status</th>
-                  <th>Reason</th>
                 </tr>
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>ATUALIZEI AQUI NOVAMENTE</td>
+                  <td id="numserie"></td>
+                  <td id="descricao"></td>
+                  <td id="tipo"></td>
+                  <td id="localizacao"></td>
+                  <td id="status"></td>
                 </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback </td>
-                </tr>
-              </table>
+                </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -165,7 +144,7 @@
                 </div>
                 <div class="modal-body">
                   <!-- <p>Some text in the modal.</p> -->
-                  <table id="example1" class="table table-bordered table-hover">
+                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
                     <thead>
                     <tr>
                       <th>Num. Série</th>
@@ -284,11 +263,31 @@ $('#example1').DataTable({
 }
 })
 
-$('#example1 tbody').on('dblclick', 'tr', function () {
+$('#example1 tbody').on('click', 'tr', function () {
 var table = $('#example1').DataTable();
 var data = table.row( this ).data();
+document.getElementById('numserie').innerHTML=data[0];
+document.getElementById('numserie').id='';
+document.getElementById('descricao').innerHTML=data[1];
+document.getElementById('descricao').id='';
+document.getElementById('tipo').innerHTML=data[2];
+document.getElementById('tipo').id='';
+document.getElementById('localizacao').innerHTML=data[3];
+document.getElementById('localizacao').id='';
+document.getElementById('status').innerHTML=data[4];
+document.getElementById('status').id='';
 
-alert( 'You clicked on '+data[0]+'\'s row' );
+$('#teste tbody').append(
+          "<tr>"+
+          "<td id='numserie'></td>"+
+          "<td id='descricao'></td>"+
+          "<td id='tipo'></td>"+
+          "<td id='localizacao'></td>"+
+          "<td id='status'></td>"+
+          "</tr>");
+
+
+//alert( 'You clicked on '+data[0]+'\'s row' );
 } );
 
 });

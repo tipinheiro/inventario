@@ -32,20 +32,20 @@
                 <div class="form-group">
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
+                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{15}" required>
                 </div>
               </div>
               <div class="col-xs-1">
                 <div class="form-group">
                   <label>Ano:</label>
-                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask required>
+                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask pattern="[0-9]{4}" required>
                 </div>
               </div>
               <div class="col-xs-3">
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
+                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{15}" required>
                 </div>
 
               </div>
