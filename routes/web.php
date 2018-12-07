@@ -16,9 +16,22 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/equipamentos', 'EquipamentoController@lista');
+Route::get('/acessorio', 'AcessorioController@cadastroAcessorio');
+
+Route::get('/acessorios', 'AcessorioController@lista');
+
+Route::get('/acessorio/{id}/editar', 'AcessorioController@editar');
+
+Route::post('/acessorio/salvar', 'AcessorioController@salvar');
+
+Route::post('/acessorio/{id}/atualizar', 'AcessorioController@atualizar');
+
+Route::post('/acessorio/{id}/remover','AcessorioController@remover');
+
 
 Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
+
+Route::get('/equipamentos', 'EquipamentoController@lista');
 
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
@@ -27,6 +40,8 @@ Route::get('/equipamento/{id}/editar', 'EquipamentoController@editar');
 Route::post('/equipamento/salvar', 'EquipamentoController@salvar');
 
 Route::post('/equipamento/{id}/atualizar', 'EquipamentoController@atualizar');
+
+Route::post('/equipamento/{id}/remover','EquipamentoController@remover');
 
 Auth::routes();
 

@@ -13,15 +13,17 @@
 <form class="modal-content animate" action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
   {!! csrf_field() !!}
   <div class="imgcontainer">
-    <img src="/svg/inventario.png" alt="Avatar" class="avatar"><br>
-      <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
-      <p {{ trans('adminlte::adminlte.login_message') }}</p>
+    <img src="/svg/140.png" alt="Avatar" class="avatar"><br>
+    <div class="login-logo">
+      <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>UFMA</b>Inventário') !!}</a>
+    </div>
+    <p {{ trans('adminlte::adminlte.login_message') }}</p>
     </div>
 
     <div class="container form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
       <label for="uname"><b>Usuário</b></label>
       <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
-        <input type="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('adminlte::adminlte.email') }}">
+        <input type="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('adminlte::adminlte.email') }}" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
         <span class="help-block">
@@ -30,9 +32,9 @@
         @endif
       </div>
 
-      <label for="psw"><b>Senha</b></label>
+      <label><b>Senha</b></label>
       <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
-        <input type="password" name="password" placeholder="{{ trans('adminlte::adminlte.password') }}">
+        <input type="password" name="password" placeholder="{{ trans('adminlte::adminlte.password') }}"required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
         <span class="help-block">
@@ -41,19 +43,17 @@
         @endif
       </div>
 
-      <button type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
+      <button class="btn-success" title="Entrar" type="submit">{{ trans('adminlte::adminlte.sign_in') }}</button>
 
       @if (config('adminlte.register_url', 'register'))
       <a href="{{ url(config('adminlte.register_url', 'register')) }}">
-        <input type="button" title="Criar Novo Usuário" value="Criar Novo Usuário" />
+        <input type="button" class="btn-info" title="Criar Novo Usuário" value="Criar Novo Usuário" />
       </a>
       @endif
 
       <label>
         <input type="checkbox" name="remember"> {{ trans('adminlte::adminlte.remember_me') }}
       </label>
-
-      <button title="Cancelar" type="button" onclick="document.getElementById('id01').style.display = 'none'" class="cancelbtn"><b>Cancelar</b></button>
 
       <span class="psw">Esqueceu a <a href="{{ url(config('adminlte.password_reset_url', 'password/reset')) }}">senha?</a></span>
     </div>

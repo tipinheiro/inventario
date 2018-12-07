@@ -81,6 +81,7 @@
                 <div class="form-group">
                   <label>Situação:</label>
                   <select class="form-control" name="idsituacao">
+
                     @foreach($situacao as $s)
                     <option value="{{ $s->id }}"@if($s->id == $equipamento->idsituacao) selected="selected" @endif>{{ $s->situacao }}</option>
                     @endforeach
@@ -89,13 +90,11 @@
               </div>
             </div>
 
-            <div class="box-footer">
-
               <div class="box-footer">
-                <button type="button" class="btn btn-default">Cancelar</button>
+                <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
                 <button type="submit" class="btn btn-info pull-right">Atualizar</button>
               </div>
-            </div>
+
             <!-- box-footer  -->
           </form>
 
@@ -113,43 +112,22 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+              <table class="table table-hover" id="teste">
                 <tr>
-                  <th>ID</th>
-                  <th>User</th>
-                  <th>Date</th>
+                  <th>Número de Série</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Localização</th>
                   <th>Status</th>
-                  <th>Reason</th>
                 </tr>
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                  <td id="numserie"></td>
+                  <td id="descricao"></td>
+                  <td id="tipo"></td>
+                  <td id="localizacao"></td>
+                  <td id="status"></td>
                 </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-warning">Pending</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-primary">Approved</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td><span class="label label-danger">Denied</span></td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                </tr>
-              </table>
+                </table>
             </div>
             <!-- /.box-body -->
           </div>
@@ -162,11 +140,15 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
+                  <h4 class="modal-title">Acessórios</h4>
                 </div>
                 <div class="modal-body" >
                   <!-- <p>Some text in the modal.</p> -->
+<<<<<<< HEAD
                   <table id="acessorio_table" class="table table-bordered table-hover">
+=======
+                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+>>>>>>> c94d1c70fae60aa545c7b940e08bd2e0074e3a65
                     <thead>
                     <tr>
                       <th>Num. Série</th>
@@ -199,7 +181,7 @@
                   </table>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                 </div>
               </div>
               <!--  end Modal content-->
@@ -210,102 +192,58 @@
         <!-- /.tab-pane -->
 
         <div class="tab-pane" id="settings">
-          <form class="form-horizontal" action="/equipamento/salvar" method="post">
-            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
 
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
 
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-              <div class="col-sm-10">
-                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                  </label>
+          <div class="box-body">
+              <div class="box">
+                <!--
+                    <div class="box-header">
+                      <h3 class="box-title">Data Table With Full Features</h3>
+                    </div>
+                    -->
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Tombamento</th>
+                          <th>Num. Série</th>
+                          <th>Descrição</th>
+                          <th>Tipo</th>
+                          <th>Data de Cadastro</th>
+                          <th>Ultima Movimentação</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>{{ $equipamento->id }}</td>
+                            <td>{{ $equipamento->tombamento }}</td>
+                            <td>{{ $equipamento->numero_serie }}</td>
+                            <td>{{ $equipamento->descricao }}</td>
+                            <td>{{ $equipamento->idtipo_item }}</td>
+                            <td>{{ $equipamento->created_at }}</td>
+                            <td>{{ $equipamento->updated_at}}</td>
+                          </tr>
+                          </tbody>
+                        <tfoot>
+                        <tr>
+                          <th>Rendering engine</th>
+                          <th>Browser</th>
+                          <th>Platform(s)</th>
+                          <th>Engine version</th>
+                          <th>CSS grade</th>
+                          <th>kerneldark</th>
+                          <th>Status</th>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                    <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
                 </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
-              </div>
-            </div>
-          </form>
-        </div>
-        <!-- /.tab-pane -->
 
-      </div>
-      <!-- /.tab-content -->
-    </div>
-    <!--end start tab-->
-
-    <!-- /input-group -->
-  </div>
-  <!-- /.box-body -->
-</div>
-<!-- /.box -->
-<!-- <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
-<script lang="javascript">
-$( document ).ready(function() {
-  console.log( "ready!" );
-  $('#example1').DataTable({
-    'info'        : false,
-    'lengthChange': false,
-    "language": {
-          "lengthMenu": "Display _MENU_ records per page",
-          "zeroRecords": "Nothing found - sorry",
-          "info": "Showing page _PAGE_ of _PAGES_",
-          "infoEmpty": "No records available",
-          "search": "Busca",
-          "infoFiltered": "(filtered from _MAX_ total records)",
-          "paginate": {
-            "first":      "Primeiro",
-            "last":       "Último",
-            "next":       "Próximo",
-            "previous":   "Anterior"
-          }
-    }
-  })
-
-  $('#example1 tbody').on('dblclick', 'tr', function () {
-    var table = $('#example1').DataTable();
-     var data = table.row( this ).data();
-     alert( 'You clicked on '+data[0]+'\'s row' );
-  } );
-
-});
-</script> -->
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {
@@ -329,10 +267,35 @@ $('#acessorio_table').DataTable({
 }
 })
 
+<<<<<<< HEAD
 $('#acessorio_table tbody').on('dblclick', 'tr', function () {
+=======
+$('#example1 tbody').on('click', 'tr', function () {
+>>>>>>> c94d1c70fae60aa545c7b940e08bd2e0074e3a65
 var table = $('#example1').DataTable();
 var data = table.row( this ).data();
-alert( 'You clicked on '+data[0]+'\'s row' );
+document.getElementById('numserie').innerHTML=data[0];
+document.getElementById('numserie').id='';
+document.getElementById('descricao').innerHTML=data[1];
+document.getElementById('descricao').id='';
+document.getElementById('tipo').innerHTML=data[2];
+document.getElementById('tipo').id='';
+document.getElementById('localizacao').innerHTML=data[3];
+document.getElementById('localizacao').id='';
+document.getElementById('status').innerHTML=data[4];
+document.getElementById('status').id='';
+
+$('#teste tbody').append(
+          "<tr>"+
+          "<td id='numserie'></td>"+
+          "<td id='descricao'></td>"+
+          "<td id='tipo'></td>"+
+          "<td id='localizacao'></td>"+
+          "<td id='status'></td>"+
+          "</tr>");
+
+
+//alert( 'You clicked on '+data[0]+'\'s row' );
 } );
 
 });

@@ -121,6 +121,13 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Acessórios',
+            'url'         => 'acessorios',
+            'icon'        => 'desktop',
+            'label'       => 3,
+            'label_color' => 'success',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
