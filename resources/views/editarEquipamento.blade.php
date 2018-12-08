@@ -258,21 +258,25 @@
 
         var equipamentos_id = $('#idequipamento').val();
 
-        // $('#teste').DataTable({
-        //   "ajax": "/acessorio/4/associados",
-        //   "columns": [
-        //     { "data": "numero_serie" },
-        //     { "data": "tipo_items_id" },
-        //     { "data": "equipamentos_id" },
-        //     { "data": "descricao" },
-        //     { "data": "localizacaos_id" },
-        //     { "data": "situacaos_id" }
-        //   ]
-        // });
-
         //
         $('#teste').DataTable( {
-          "ajax": "/acessorio/1/associados",
+          'info'        : false,
+          'lengthChange': false,
+          "language": {
+            "lengthMenu": "Display _MENU_ records per page",
+            "zeroRecords": "Nothing found - sorry",
+            "info": "Showing page _PAGE_ of _PAGES_",
+            "infoEmpty": "No records available",
+            "search": "Busca",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "paginate": {
+              "first":      "Primeiro",
+              "last":       "Último",
+              "next":       "Próximo",
+              "previous":   "Anterior"
+            }
+          },
+          "ajax": "/acessorio/"+equipamentos_id+"/associados",
           "columns": [
             { "data": "numero_serie" },
             { "data": "tipo_items_id" },
@@ -282,16 +286,6 @@
             { "data": "situacaos_id" }
           ]
         } );
-
-        // $('#teste').DataTable( {
-        //   // 'ajax': {
-        //   //     'ajax': '/acessorio/4/associados',
-        //   // }
-        //     // 'ajax': {
-        //     //     'url': '/acessorio/4/associados',
-        //     //     'datasrc': ''
-        //     // }
-        // });
 
         // console.log( "ready!" );
         $('#example1').DataTable({
@@ -312,35 +306,6 @@
             }
           }
         });
-
-
-
-        /*
-        $('#example1 tbody').on('click', 'tr', function () {
-
-        var table = $('#example1').DataTable();
-        var data = table.row( this ).data();
-        document.getElementById('numserie').innerHTML=data[0];
-        document.getElementById('numserie').id='';
-        document.getElementById('descricao').innerHTML=data[1];
-        document.getElementById('descricao').id='';
-        document.getElementById('tipo').innerHTML=data[2];
-        document.getElementById('tipo').id='';
-        document.getElementById('localizacao').innerHTML=data[3];
-        document.getElementById('localizacao').id='';
-        document.getElementById('status').innerHTML=data[4];
-        document.getElementById('status').id='';
-
-        $('#teste tbody').append(
-        "<tr>"+
-        "<td id='numserie'></td>"+
-        "<td id='descricao'></td>"+
-        "<td id='tipo'></td>"+
-        "<td id='localizacao'></td>"+
-        "<td id='status'></td>"+
-        "</tr>");
-
-        */
 
         $.ajaxSetup({
           headers: {
@@ -372,12 +337,15 @@
               console.log(e);
             }
           });
+
+          var v_associados = $('#teste').DataTable();
+          v_associados.ajax.reload();
         });
 
         //alert( 'You clicked on '+data[0]+'\'s row' );
       } );
 
       // });
-    </script>
-    @endif
-    @stop
+      </script>
+      @endif
+      @stop
