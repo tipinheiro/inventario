@@ -271,21 +271,28 @@
         // });
 
         //
-        // $('#teste').DataTable( {
-        //   "ajax": "/acessorio/4/associados",
-        //   "columns": [
-        //     { "data": "numero_serie" },
-        //     { "data": "tipo_items_id" },
-        //     { "data": "equipamentos_id" },
-        //     { "data": "descricao" },
-        //     { "data": "localizacaos_id" },
-        //     { "data": "situacaos_id" }
-        //   ]
-        // } );
-
         $('#teste').DataTable( {
-            'ajax': '/acessorio/4/associados'
-        });
+          "ajax": "/acessorio/1/associados",
+          "columns": [
+            { "data": "numero_serie" },
+            { "data": "tipo_items_id" },
+            { "data": "equipamentos_id" },
+            { "data": "descricao" },
+            { "data": "localizacaos_id" },
+            { "data": "situacaos_id" }
+          ]
+        } );
+
+        // $('#teste').DataTable( {
+        //   // 'ajax': {
+        //   //     'ajax': '/acessorio/4/associados',
+        //   // }
+        //     // 'ajax': {
+        //     //     'url': '/acessorio/4/associados',
+        //     //     'datasrc': ''
+        //     // }
+        // });
+
         // console.log( "ready!" );
         $('#example1').DataTable({
           'info'        : false,

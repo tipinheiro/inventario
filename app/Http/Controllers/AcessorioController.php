@@ -92,15 +92,7 @@ class AcessorioController extends Controller {
 
   public function associados($id) {
     $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
-    return Response::json($associados);
-    // $data = $request->json()->all();
-    // $acessorio = acessorios::find($data['id']);
-    // $acessorio->equipamentos_id = $data['equipamentos_id'];
-    // $acessorio = acessorios::find($request->input('id'));
-    // $acessorio->equipamentos_id = $request->input('equipamentos_id');
-    // $acessorio->update();
-    //return Response::json('ok');
-    // return 'ok';
+    return Response::json(['data'=>$associados],200);
   }
 
 }
