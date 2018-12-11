@@ -22,7 +22,7 @@ use Route;
   <div class="col-xs-2">
 <!-- <button type="button" class="btn btn-block btn-success btn-sm">Novo</button> -->
 <!-- <a href=/equipamento><button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-fw fa-plus box-title"></i>Novo</button></a> -->
-<h3 class="box-title pull-right"><a href=/equipamento><i class="fa fa-fw fa-plus">Novo</i></a></h3>
+<h3 class="box-title pull-right"><a href=/equipamento><i class="glyphicon glyphicon-plus">Novo</i></a></h3>
 </div>
   </div>
   </div>

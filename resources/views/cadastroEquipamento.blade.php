@@ -93,8 +93,8 @@
               </div>
             </div>
               <div class="box-footer">
-                  <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
-                <button type="submit" class="btn btn-info pull-right">Salvar</button>
+                  <a href=/equipamentos><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
+                <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
               </div>
 
             <!-- box-footer  -->

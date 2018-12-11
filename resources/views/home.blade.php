@@ -7,5 +7,7 @@
 @stop
 
 @section('content')
-    <p>Bem Vindo!</p>
+     Bem Vindo!<br>
+     <h3 class="glyphicon glyphicon-user"> {{Auth::user()->name}}</h3>
+
 @stop
