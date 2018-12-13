@@ -294,7 +294,7 @@
             { "data": "situacao" },
             {
               "data": null,
-              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.idacessorio + '>Desassociar</button>'; }
+              "mRender": function (o) { return '<button type="button" class="desassociarButton btn btn-danger"  value=' +o.idacessorio + '>Desassociar</button>'; }
             }
           ]
         } );
