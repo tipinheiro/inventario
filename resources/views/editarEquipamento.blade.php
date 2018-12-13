@@ -119,7 +119,11 @@
                 <table class="table table-bordered table-hover table-striped" style="cursor: pointer;" id="teste">
                   <thead>
                     <tr>
+<<<<<<< HEAD
 
+=======
+                      <th>ID</th>
+>>>>>>> ecc282e5f99790835c9dea474b6acc56d4d75502
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -132,7 +136,11 @@
                   </tbody>
                   <tfoot>
                     <tr>
+<<<<<<< HEAD
                     
+=======
+                      <th>ID</th>
+>>>>>>> ecc282e5f99790835c9dea474b6acc56d4d75502
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -163,6 +171,7 @@
                   <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
                     <thead>
                       <tr>
+                        <th>ID</th>
                         <th>Num. Série</th>
                         <th>Descrição</th>
                         <th>Tipo</th>
@@ -173,6 +182,7 @@
                     <tbody>
                       @foreach($acessorios as $acessorio)
                       <tr>
+                        <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
                         <td>{{ $acessorio->descricao }}</td>
                         <td>{{ $acessorio->tipo_items_id }}</td>
@@ -183,6 +193,7 @@
                     </tbody>
                     <tfoot>
                       <tr>
+                        <th>ID</th>
                         <th>Rendering engine</th>
                         <th>Browser</th>
                         <th>Platform(s)</th>
@@ -283,6 +294,7 @@
           },
           "ajax": "/acessorio/"+equipamentos_id+"/associados",
           "columns": [
+            { "data": "id" },
             { "data": "numero_serie" },
             { "data": "tipoitem" },
             { "data": "descricao" },
@@ -290,13 +302,20 @@
             { "data": "situacao" },
             {
               "data": null,
-              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.id + '>Desassociar</button>'; }
+              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.idacessorio + '>Desassociar</button>'; }
             }
           ]
         } );
 
         // console.log( "ready!" );
         $('#example1').DataTable({
+          // "columnDefs": [
+          //     {
+          //         "targets": [ 0 ],
+          //         "visible": false,
+          //         "searchable": false
+          //     }
+          // ],
           'info'        : false,
           'lengthChange': false,
           "language": {
