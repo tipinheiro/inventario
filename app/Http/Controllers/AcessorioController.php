@@ -99,7 +99,15 @@ class AcessorioController extends Controller {
   }
 
   public function associados($id) {
-    $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
+    // $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
+
+    $associados = DB::table('acessorios')
+    ->join('situacaos', 'acessorios.situacaos_id', '=', 'situacaos.id')
+    ->join('localizacaos', 'acessorios.localizacaos_id', '=', 'localizacaos.id')
+    ->join('tipo_items', 'acessorios.tipo_items_id', '=', 'tipo_items.id')
+    ->select('acessorios.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
+    ->get();
+
     return Response::json(['data'=>$associados],200);
   }
 

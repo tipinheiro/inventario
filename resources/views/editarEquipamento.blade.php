@@ -113,7 +113,7 @@
               </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
+            <div class="box-body">
 
               <table class="table table-hover" id="teste">
                 <thead>
@@ -279,10 +279,10 @@
           "ajax": "/acessorio/"+equipamentos_id+"/associados",
           "columns": [
             { "data": "numero_serie" },
-            { "data": "tipo_items_id" },
+            { "data": "tipoitem" },
             { "data": "descricao" },
-            { "data": "localizacaos_id" },
-            { "data": "situacaos_id" },
+            { "data": "localizacao" },
+            { "data": "situacao" },
             {
               "data": null,
               "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.id + '>Desassociar</button>'; }
