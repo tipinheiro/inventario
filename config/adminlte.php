@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'title' => 'UFMA INVENTÁRIO',
+    'title' => 'UFMA Inventário',
 
     'title_prefix' => '',
 
@@ -108,7 +108,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        'Menu Navegação',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
