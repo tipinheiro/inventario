@@ -119,6 +119,7 @@
                 <table class="table table-hover" id="teste">
                   <thead>
                     <tr>
+                      <th>ID</th>
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -128,17 +129,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>123</td>
-                      <td>123</td>
-                      <td>123</td>
-                      <td>123</td>
-                      <td>b</td>
-                      <td>a</td>
-                    </tr>
                   </tbody>
                   <tfoot>
                     <tr>
+                      <th>ID</th>
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -169,6 +163,7 @@
                   <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
                     <thead>
                       <tr>
+                        <th>ID</th>
                         <th>Num. Série</th>
                         <th>Descrição</th>
                         <th>Tipo</th>
@@ -179,6 +174,7 @@
                     <tbody>
                       @foreach($acessorios as $acessorio)
                       <tr>
+                        <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
                         <td>{{ $acessorio->descricao }}</td>
                         <td>{{ $acessorio->tipo_items_id }}</td>
@@ -189,6 +185,7 @@
                     </tbody>
                     <tfoot>
                       <tr>
+                        <th>ID</th>
                         <th>Rendering engine</th>
                         <th>Browser</th>
                         <th>Platform(s)</th>
@@ -289,6 +286,7 @@
           },
           "ajax": "/acessorio/"+equipamentos_id+"/associados",
           "columns": [
+            { "data": "id" },
             { "data": "numero_serie" },
             { "data": "tipoitem" },
             { "data": "descricao" },
@@ -296,13 +294,20 @@
             { "data": "situacao" },
             {
               "data": null,
-              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.id + '>Desassociar</button>'; }
+              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.idacessorio + '>Desassociar</button>'; }
             }
           ]
         } );
 
         // console.log( "ready!" );
         $('#example1').DataTable({
+          // "columnDefs": [
+          //     {
+          //         "targets": [ 0 ],
+          //         "visible": false,
+          //         "searchable": false
+          //     }
+          // ],
           'info'        : false,
           'lengthChange': false,
           "language": {
