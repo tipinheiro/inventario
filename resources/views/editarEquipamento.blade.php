@@ -103,46 +103,57 @@
         </div>
         <!-- /.tab-pane -->
         <div class="tab-pane" id="acessorios">
-          <div class="box">
-            <div class="box-header">
-              <div class="input-group margin">
-                <input type="text" class="form-control">
-                <span class="input-group-btn">
-                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirAcessorio">Associar</button>
-                </span>
+          <div clas="box-body">
+            <div class="box">
+              <div class="box-header">
+                <div class="input-group margin">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirAcessorio">Associar</button>
+                  </span>
+                </div>
               </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
+              <!-- /.box-header -->
+              <div class="box-body">
 
-              <table class="table table-hover" id="teste">
-                <thead>
-                  <tr>
-                    <th>Número de Série</th>
-                    <th>Tipo</th>
-                    <th>Descrição</th>
-                    <th>Localização</th>
-                    <th>Situação</th>
-                    <th>Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>Número de Série</th>
-                    <th>Tipo</th>
-                    <th>Descrição</th>
-                    <th>Localização</th>
-                    <th>Situação</th>
-                    <th>Ação</th>
-                  </tr>
-                </tfoot>
-              </table>
+                <table class="table table-hover" id="teste">
+                  <thead>
+                    <tr>
+                      <th>Número de Série</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                      <th>Localização</th>
+                      <th>Situação</th>
+                      <th>Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>123</td>
+                      <td>123</td>
+                      <td>123</td>
+                      <td>123</td>
+                      <td>b</td>
+                      <td>a</td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>Número de Série</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                      <th>Localização</th>
+                      <th>Situação</th>
+                      <th>Ação</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.box-body -->
             </div>
-            <!-- /.box-body -->
+            <!-- /.box -->
           </div>
-          <!-- /.box -->
+          <!-- /.box-body -->
           <!-- Modal -->
           <div id="inserirAcessorio" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -346,20 +357,20 @@
         });
 
         $('#teste tbody').on( 'click', 'button', function () {
-            var v_associados = $('#teste').DataTable();
-            console.log('desassociar id = ' + $(this).attr('value'));
-            var id = $(this).attr('value');
-            $.ajax({
-              url: '/acessorio/desassociar',
-              type: 'POST',
-              // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
-              data: {id: id},
-              dataType: 'html',
-              success: function (e) {
-                console.log(e);
-              }
-            });
-            v_associados.ajax.reload();
+          var v_associados = $('#teste').DataTable();
+          console.log('desassociar id = ' + $(this).attr('value'));
+          var id = $(this).attr('value');
+          $.ajax({
+            url: '/acessorio/desassociar',
+            type: 'POST',
+            // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
+            data: {id: id},
+            dataType: 'html',
+            success: function (e) {
+              console.log(e);
+            }
+          });
+          v_associados.ajax.reload();
         } );
 
         //alert( 'You clicked on '+data[0]+'\'s row' );
