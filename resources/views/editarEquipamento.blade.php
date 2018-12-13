@@ -116,10 +116,14 @@
               <!-- /.box-header -->
               <div class="box-body">
 
-                <table class="table table-hover" id="teste">
+                <table class="table table-bordered table-hover table-striped" style="cursor: pointer;" id="teste">
                   <thead>
                     <tr>
+<<<<<<< HEAD
+
+=======
                       <th>ID</th>
+>>>>>>> ecc282e5f99790835c9dea474b6acc56d4d75502
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -132,7 +136,11 @@
                   </tbody>
                   <tfoot>
                     <tr>
+<<<<<<< HEAD
+                    
+=======
                       <th>ID</th>
+>>>>>>> ecc282e5f99790835c9dea474b6acc56d4d75502
                       <th>Número de Série</th>
                       <th>Tipo</th>
                       <th>Descrição</th>
@@ -272,7 +280,7 @@
           'lengthChange': false,
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "Nada Encontrado",
             "info": "Showing page _PAGE_ of _PAGES_",
             "infoEmpty": "Noo records available",
             "search": "Busca",
