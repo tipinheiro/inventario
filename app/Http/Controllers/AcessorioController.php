@@ -90,6 +90,14 @@ class AcessorioController extends Controller {
     return 'ok';
   }
 
+  public function desassociar($id) {
+    $acessorio = acessorios::find($request->input('id'));
+    $acessorio->equipamentos_id = nullable();
+    $acessorio->update();
+    //return Response::json('ok');
+    return 'ok';
+  }
+
   public function associados($id) {
     $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
     return Response::json(['data'=>$associados],200);

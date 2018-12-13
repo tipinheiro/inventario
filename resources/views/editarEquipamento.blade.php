@@ -118,24 +118,24 @@
               <table class="table table-hover" id="teste">
                 <thead>
                   <tr>
-                    <th>numero_serie</th>
-                    <th>tipo_items_id</th>
-                    <th>equipamentos_id</th>
-                    <th>descricao</th>
-                    <th>localizacaos_id</th>
-                    <th>situacaos_id</th>
+                    <th>Número de Série</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Localização</th>
+                    <th>Situação</th>
+                    <th>Ação</th>
                   </tr>
                 </thead>
                 <tbody>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th>numero_serie</th>
-                    <th>tipo_items_id</th>
-                    <th>equipamentos_id</th>
-                    <th>descricao</th>
-                    <th>localizacaos_id</th>
-                    <th>situacaos_id</th>
+                    <th>Número de Série</th>
+                    <th>Tipo</th>
+                    <th>Descrição</th>
+                    <th>Localização</th>
+                    <th>Situação</th>
+                    <th>Ação</th>
                   </tr>
                 </tfoot>
               </table>
@@ -280,10 +280,13 @@
           "columns": [
             { "data": "numero_serie" },
             { "data": "tipo_items_id" },
-            { "data": "equipamentos_id" },
             { "data": "descricao" },
             { "data": "localizacaos_id" },
-            { "data": "situacaos_id" }
+            { "data": "situacaos_id" },
+            {
+              "data": null,
+              "mRender": function (o) { return '<button type="button" class="desassociarButton" value=' +o.id + '>Desassociar</button>'; }
+            }
           ]
         } );
 
@@ -341,6 +344,23 @@
           var v_associados = $('#teste').DataTable();
           v_associados.ajax.reload();
         });
+
+        $('#teste tbody').on( 'click', 'button', function () {
+            var v_associados = $('#teste').DataTable();
+            console.log('desassociar id = ' + $(this).attr('value'));
+            var id = $(this).attr('value');
+            $.ajax({
+              url: '/acessorio/desassociar',
+              type: 'POST',
+              // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
+              data: {id: id},
+              dataType: 'html',
+              success: function (e) {
+                console.log(e);
+              }
+            });
+            v_associados.ajax.reload();
+        } );
 
         //alert( 'You clicked on '+data[0]+'\'s row' );
       } );

@@ -28,6 +28,8 @@ Route::post('/acessorio/salvar', 'AcessorioController@salvar');
 
 Route::post('/acessorio/associar', 'AcessorioController@associar');
 
+Route::post('/acessorio/desassociar', 'AcessorioController@associar');
+
 Route::post('/acessorio/{id}/atualizar', 'AcessorioController@atualizar');
 
 Route::post('/acessorio/{id}/remover','AcessorioController@remover');
