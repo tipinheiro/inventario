@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{15}" required>
+                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{5}" required>
                 </div>
               </div>
               <div class="col-xs-1">
@@ -45,7 +45,7 @@
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{15}" required>
+                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{5}" required>
                 </div>
 
               </div>
@@ -94,8 +94,13 @@
             </div>
               <div class="box-footer">
                   <a href=/equipamentos><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
-                <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
-              </div>
+                <button onclick="funcao()" type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
+            <script>
+            function funcao() {
+              alert("Item cadastrado!");
+            }
+            </script>
+                </div>
 
             <!-- box-footer  -->
           </form>

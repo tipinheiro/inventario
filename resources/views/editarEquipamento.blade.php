@@ -94,8 +94,14 @@
 
             <div class="box-footer">
               <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
-              <button type="submit" class="btn btn-info pull-right">Atualizar</button>
+              <button onclick="funcao()" type="submit" class="btn btn-info pull-right">Atualizar</button>
             </div>
+
+            <script>
+            function funcao() {
+              alert("Item atualizado!");
+            }
+            </script>
 
             <!-- box-footer  -->
           </form>
@@ -273,7 +279,7 @@
           'lengthChange': false,
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "Nenhum item encontrado!",
             "info": "Showing page _PAGE_ of _PAGES_",
             "infoEmpty": "Noo records available",
             "search": "Busca",
@@ -287,15 +293,14 @@
           },
           "ajax": "/acessorio/"+equipamentos_id+"/associados",
           "columns": [
+
             { "data": "id" },
             { "data": "numero_serie" },
             { "data": "tipoitem" },
             { "data": "descricao" },
             { "data": "localizacao" },
             { "data": "situacao" },
-            {
-              "data": null,
-              "mRender": function (o) { return '<button type="button" class="desassociarButton btn btn-danger"  value=' +o.idacessorio + '>Desassociar</button>'; }
+            { "data": null, "mRender": function (o) { return '<button type="button" class="desassociarButton btn btn-danger"  value=' +o.idacessorio + '>Desassociar</button>'; }
             }
           ]
         } );
@@ -313,7 +318,7 @@
           'lengthChange': false,
           "language": {
             "lengthMenu": "Display _MENU_ records per page",
-            "zeroRecords": "Nothing found - sorry",
+            "zeroRecords": "Nenhum item encontrado!",
             "info": "Showing page _PAGE_ of _PAGES_",
             "infoEmpty": "No records available",
             "search": "Busca",
@@ -357,6 +362,7 @@
               var v_associados = $('#teste').DataTable();
               v_associados.ajax.reload();
               console.log(e);
+              alert(data[2]+' adicionado!' );
             }
           });
 
@@ -372,11 +378,14 @@
             // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
             data: {id: id},
             dataType: 'html',
+
             success: function (e) {
+
               v_associados.ajax.reload();
               console.log(e);
             }
           });
+          
         } );
 
         //alert( 'You clicked on '+data[0]+'\'s row' );

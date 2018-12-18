@@ -33,7 +33,7 @@
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
+                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{5}" required>
                 </div>
 
               </div>

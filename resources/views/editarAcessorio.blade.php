@@ -78,7 +78,14 @@
 
               <div class="box-footer">
                 <a href=/acessorios><button type="button" class="btn btn-default">Cancelar</button></a>
-                <button type="submit" class="btn btn-info pull-right">Atualizar</button>
+                <button onclick="funcao()" type="submit" class="btn btn-info pull-right">Atualizar</button>
+
+                <script>
+                function funcao() {
+                  alert("Item atualizado!");
+                }
+                </script>
+
               </div>
 
             <!-- box-footer  -->
@@ -199,6 +206,7 @@
 <script lang="javascript">
 $( document ).ready(function() {
 console.log( "ready!" );
+
 $('#example1').DataTable({
 'info'        : false,
 'lengthChange': false,
