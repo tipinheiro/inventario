@@ -353,12 +353,12 @@
             data: {id: id, equipamentos_id: equipamentos_id},
             dataType: 'html',
             success: function (e) {
+              var v_associados = $('#teste').DataTable();
+              v_associados.ajax.reload();
               console.log(e);
             }
           });
 
-          var v_associados = $('#teste').DataTable();
-          v_associados.ajax.reload();
         });
 
         $('#teste tbody').on( 'click', 'button', function () {
@@ -372,10 +372,10 @@
             data: {id: id},
             dataType: 'html',
             success: function (e) {
+              v_associados.ajax.reload();
               console.log(e);
             }
           });
-          v_associados.ajax.reload();
         } );
 
         //alert( 'You clicked on '+data[0]+'\'s row' );
