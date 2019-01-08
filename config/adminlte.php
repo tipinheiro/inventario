@@ -128,6 +128,13 @@ return [
             'label'       => 3,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Manutenção',
+            'url'         => 'manutencao',
+            'icon'        => 'desktop',
+            'label'       => 3,
+            'label_color' => 'success',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

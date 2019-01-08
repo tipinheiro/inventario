@@ -233,6 +233,7 @@
                   <th>Num. Série</th>
                   <th>Descrição</th>
                   <th>Tipo</th>
+                  <th>Localização</th>
                   <th>Data de Cadastro</th>
                   <th>Ultima Movimentação</th>
                 </tr>
@@ -244,6 +245,7 @@
                   <td>{{ $equipamento->numero_serie }}</td>
                   <td>{{ $equipamento->descricao }}</td>
                   <td>{{ $equipamento->idtipo_item }}</td>
+                  <td>{{ $equipamento->idlocalizacao }}</td>
                   <td>{{ $equipamento->created_at }}</td>
                   <td>{{ $equipamento->updated_at}}</td>
                 </tr>
@@ -255,6 +257,7 @@
                   <th>Platform(s)</th>
                   <th>Engine version</th>
                   <th>CSS grade</th>
+                  <th>Localização</th>
                   <th>kerneldark</th>
                   <th>Status</th>
                 </tr>
@@ -385,7 +388,7 @@
               console.log(e);
             }
           });
-          
+
         } );
 
         //alert( 'You clicked on '+data[0]+'\'s row' );

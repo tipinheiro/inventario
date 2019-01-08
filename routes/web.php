@@ -34,12 +34,16 @@ Route::post('/acessorio/{id}/atualizar', 'AcessorioController@atualizar');
 
 Route::post('/acessorio/{id}/remover','AcessorioController@remover');
 
+Route::post('/manutencao/salvar', 'ManutencaoController@salvar');
+
 
 Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
 
 Route::get('/equipamentos', 'EquipamentoController@lista');
 
 Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
+
+Route::get('/manutencao', 'ManutencaoController@cadastroManutencao');
 
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
