@@ -7,6 +7,7 @@ use inventario\situacao;
 use inventario\localizacao;
 use inventario\tipo_item;
 use inventario\acessorios;
+use inventario\Relatorios\MyReport;
 
 class EquipamentoController extends Controller {
 
@@ -59,6 +60,24 @@ class EquipamentoController extends Controller {
     //return view('user.index', ['users' => $users]);
     return view('mostraEquipamento')->with('equipamento', $equipamento[0]);
     //return view('listaEquipamento', ['equipamentos' => equipamentos]);
+  }
+
+  public function relatorio() {
+    // return '<h1>Relatório de equipamentos</h1>';
+    $report = new MyReport;
+    $report->run();
+    return view("report",["report"=>$report]);
+    /*
+    $id = Request::route('id', '0');
+    $equipamento = DB::select('select * from equipamentos where id = ?', [$id]);
+
+    if (empty($equipamento))
+      return 'Equipamento inexistente.';
+
+    //return view('user.index', ['users' => $users]);
+    return view('mostraEquipamento')->with('equipamento', $equipamento[0]);
+    //return view('listaEquipamento', ['equipamentos' => equipamentos]);
+    */
   }
 
   public function salvar(Request $request) {

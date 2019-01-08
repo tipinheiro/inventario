@@ -39,6 +39,8 @@ Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
 
 Route::get('/equipamentos', 'EquipamentoController@lista');
 
+Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
+
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
 Route::get('/equipamento/{id}/editar', 'EquipamentoController@editar');
