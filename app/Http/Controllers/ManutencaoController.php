@@ -16,11 +16,15 @@ class ManutencaoController extends Controller {
 
 
   public function cadastroManutencao() {
+    $equipamento = DB::select('SELECT tombamento, numero_serie, id AS idequipamento, descricao, NULL AS idacessorio  FROM equipamentos
+
+    union SELECT null as tombamento, numero_serie, null AS idequipamento, descricao, id AS idacessorio FROM acessorios');
+
     return view('cadastroManutencao')
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
     ->with('acessorios', acessorios::All())
-    ->with('equipamentos', Equipamento::All())
+    ->with('equipamentos', $equipamento)
     ->with('manutencaos', manutencao::All())
     ->with('tipos', tipo_item::All());
   }

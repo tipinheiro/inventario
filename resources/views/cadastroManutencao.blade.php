@@ -18,27 +18,31 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#activity" data-toggle="tab">Manutenção Equipamento</a></li>
+
         <!-- <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li> -->
         <!-- <li><a href="#settings" data-toggle="tab">Movimentações</a></li> -->
         <!-- <li><a href="#tab-pesquisa" data-toggle="tab">Pesquisa</a></li> -->
       </ul>
       <div class="tab-content">
+
         <div class="active tab-pane" id="activity">
+
           <!-- Post -->
           <form role="form"  action="/manutencao/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-2">
-                <div class="form-group">
+                                  <div class="col-xs-2">
+                      <div class="form-group">
+
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{5}" required>
+                  <input type="text" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
                 </div>
               </div>
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
+                  <input type="text" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" required>
                 </div>
               </div>
 
@@ -67,24 +71,9 @@
                 </div>
           </div>
 
-                    <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirEquipamento">Procurar</button>
-
-                <div class="col-xs-2">
-                  <div class="form-group">
-                    <label>Situação:</label>
-                    <select class="form-control" name="idsituacao" required>
-                      <option></option>
-                      @foreach($situacao as $s)
-                      <option value="{{ $s->id }}">{{ $s->situacao }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-
-
                 <div class="col-xs-10">
                 <div class="form-group">
-                  <label>Motivo:</label>
+                  <label>Defeito Apresentado:</label>
 
                   <input type="text" name="motivo" class="form-control" required>
                 </div>
@@ -112,7 +101,7 @@
                 <th>Descrição</th>
                 <th>Tipo</th>
                 <th>Localização</th>
-                <th>Situação</th>
+                <th>Defeito Apresentado</th>
                 <th>Relatório</th>
               </tr>
               </thead>
@@ -132,15 +121,14 @@
               </tbody>
               <tfoot>
               <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-                <th>kerneldark</th>
-                <th>Status</th>
+                <th>ID</th>
+                <th>Tombamento</th>
+                <th>Num. Série</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Localização</th>
+                <th>Defeito Apresentado</th>
                 <th>Relatório</th>
-
               </tr>
               </tfoot>
             </table>
@@ -179,10 +167,10 @@
         <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Num. Série</th>
+
+              <th>Tombamento</th>
+              <th>numero_serie</th>
               <th>Descrição</th>
-              <th>Tipo</th>
               <th>Localização</th>
               <th>Situação</th>
             </tr>
@@ -190,20 +178,20 @@
           <tbody>
             @foreach($equipamentos as $equipamento)
             <tr>
-              <td>{{ $equipamento->id }}</td>
+
               <td>{{ $equipamento->tombamento}}</td>
               <td>{{ $equipamento->numero_serie }}</td>
-              <td>{{ $equipamento->idtipo_item }}</td>
-              <td>{{ $equipamento->idlocalizacao }}</td>
-              <td>{{ $equipamento->idsituacao }}</td>
+              <td>{{ $equipamento->descricao }}</td>
+              <td>{{ $equipamento->idacessorio }}</td>
+              <td>{{ $equipamento->idacessorio }}</td>
             </tr>
             @endforeach
           </tbody>
           <tfoot>
             <tr>
-              <th>ID</th>
+
               <th>Rendering engine</th>
-              <th>Browser</th>
+              <th>numero_serie</th>
               <th>Platform(s)</th>
               <th>Engine version</th>
               <th>Status</th>
