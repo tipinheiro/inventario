@@ -65,7 +65,10 @@
                     </select>
                   </div>
                 </div>
-              </div>
+          </div>
+
+                    <button  type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirEquipamento">Procurar</button>
+
                 <div class="col-xs-2">
                   <div class="form-group">
                     <label>Situação:</label>
@@ -99,6 +102,53 @@
             <!-- box-footer  -->
           </form>
 
+          <div class="box-body">
+            <table id="example1" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Tombamento</th>
+                <th>Num. Série</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Localização</th>
+                <th>Situação</th>
+                <th>Relatório</th>
+              </tr>
+              </thead>
+              <tbody>
+                @foreach($manutencaos as $manutencao)
+                <tr>
+                  <td>{{ $manutencao->id }}</td>
+                  <td>{{ $manutencao->tombamento}}</td>
+                  <td>{{ $manutencao->descricao }}</td>
+                  <td>{{ $manutencao->idlocalizacao }}</td>
+                  <td>{{ $manutencao->idtipo_item }}</td>
+                  <td>{{ $manutencao->idsituacao }}</td>
+                  <td>{{ $manutencao->motivo }}</td>
+                  <td><button type="submit" class="btn btn-info pull-right glyphicon">Imprimir</button></td>
+                </tr>
+                @endforeach
+              </tbody>
+              <tfoot>
+              <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+                <th>Engine version</th>
+                <th>CSS grade</th>
+                <th>kerneldark</th>
+                <th>Status</th>
+                <th>Relatório</th>
+
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+
+
+
+
         </div>
         <!-- /.tab-pane -->
 
@@ -112,6 +162,66 @@
   <!-- /.box-body -->
 </div>
 <!-- /.box -->
+
+
+
+<div id="inserirEquipamento" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Equipamento</h4>
+      </div>
+      <div class="modal-body" >
+        <!-- <p>Some text in the modal.</p> -->
+        <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Num. Série</th>
+              <th>Descrição</th>
+              <th>Tipo</th>
+              <th>Localização</th>
+              <th>Situação</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($equipamentos as $equipamento)
+            <tr>
+              <td>{{ $equipamento->id }}</td>
+              <td>{{ $equipamento->tombamento}}</td>
+              <td>{{ $equipamento->numero_serie }}</td>
+              <td>{{ $equipamento->idtipo_item }}</td>
+              <td>{{ $equipamento->idlocalizacao }}</td>
+              <td>{{ $equipamento->idsituacao }}</td>
+            </tr>
+            @endforeach
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>ID</th>
+              <th>Rendering engine</th>
+              <th>Browser</th>
+              <th>Platform(s)</th>
+              <th>Engine version</th>
+              <th>Status</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+    <!--  end Modal content-->
+
+  </div>
+</div>
+
+
+
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {

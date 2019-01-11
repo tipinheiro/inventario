@@ -7,6 +7,7 @@ use inventario\situacao;
 use inventario\localizacao;
 use inventario\tipo_item;
 use inventario\acessorios;
+use inventario\manutencao;
 use inventario\Relatorios\MyReport;
 
 class EquipamentoController extends Controller {

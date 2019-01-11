@@ -131,7 +131,7 @@ return [
         [
             'text'        => 'Manutenção',
             'url'         => 'manutencao',
-            'icon'        => 'desktop',
+            'icon'        => 'wrench',
             'label'       => 3,
             'label_color' => 'success',
         ],

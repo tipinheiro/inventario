@@ -20,6 +20,8 @@ class ManutencaoController extends Controller {
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
     ->with('acessorios', acessorios::All())
+    ->with('equipamentos', Equipamento::All())
+    ->with('manutencaos', manutencao::All())
     ->with('tipos', tipo_item::All());
   }
 
@@ -51,7 +53,7 @@ class ManutencaoController extends Controller {
     // dd($manutencaos);
 
     //return view('user.index', ['users' => $users]);
-    return view('listaEquipamento')->with('manutencaos', $manutencaos);
+    return view('listaManutencao')->with('manutencaos', $manutencaos);
     //return view('listaEquipamento', ['manutencaos' => manutencaos]);
   }
 
@@ -100,14 +102,14 @@ class ManutencaoController extends Controller {
   }
 
   public function atualizar(Request $request, $id) {
-    $manutencao = Equipamento::find($id);
+    $manutencao = manutencao::find($id);
     $manutencao->tombamento = $request->input('tombamento');
-    $manutencao->ano = $request->input('ano');
-    $manutencao->numero_serie = $request->input('numero_serie');
     $manutencao->descricao = $request->input('descricao');
-    $manutencao->idtipo_item = $request->input('idtipo');
     $manutencao->idlocalizacao = $request->input('idlocalizacao');
+    $manutencao->idtipo_item = $request->input('idtipo');
     $manutencao->idsituacao = $request->input('idsituacao');
+    $manutencao->motivo = $request->input('motivo');
+    $manutencao->idusuario = Auth::user()->id;
     $manutencao->update();
     return redirect()->to('/manutencao');
   }
