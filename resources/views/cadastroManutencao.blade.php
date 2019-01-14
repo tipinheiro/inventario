@@ -54,7 +54,7 @@
                 <div class="col-xs-2">
                   <div class="form-group">
                     <label>Localização:</label>
-                    <select class="form-control" name="idlocalizacao" required>
+                    <select class="form-control" id="idlocalizacao" name="idlocalizacao" required>
                       <option></option>
                       @foreach($localizacoes as $localizacao)
                       <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
@@ -176,6 +176,7 @@
               <th>Tombamento</th>
               <th>Num. Série</th>
               <th>Descrição</th>
+              <th>ID Localização</th>
               <th>Localização</th>
               <th>Situação</th>
             </tr>
@@ -188,6 +189,7 @@
               <td>{{ $equipamento->tombamento}}</td>
               <td>{{ $equipamento->numero_serie }}</td>
               <td>{{ $equipamento->descricao }}</td>
+              <td>{{ $equipamento->idlocalizacao }}</td>
               <td>{{ $equipamento->localizacao }}</td>
               <td>{{ $equipamento->situacao }}</td>
             </tr>
@@ -246,6 +248,11 @@ $( document ).ready(function() {
                 "targets": [ 1 ],
                 "visible": false,
                 "searchable": false
+            },
+            {
+                "targets": [ 5 ],
+                "visible": false,
+                "searchable": false
             }
         ]
   })
@@ -258,8 +265,10 @@ $( document ).ready(function() {
      $("#idacessorio").val(data[1]);
      $("#tombamento").val(data[2]);
      $("#descricao").val(data[4]);
+     $("#idlocalizacao").val(data[5]);
+     console.log(data[5]);
      // $("#inserirEquipamento").close();
-     $("#inserirEquipamento .close").click()
+     $("#inserirEquipamento .close").click();
   } );
 
   // $("#pesquisa").click(function(){
