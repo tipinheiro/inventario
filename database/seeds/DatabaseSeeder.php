@@ -91,6 +91,10 @@ class situacaosTableSeeder extends Seeder
     DB::insert('insert into situacaos(situacao)
     values(?)',
     array('Com defeito'));
+
+    DB::insert('insert into situacaos(situacao)
+    values(?)',
+    array('Em manutenção'));
   }
 }
 

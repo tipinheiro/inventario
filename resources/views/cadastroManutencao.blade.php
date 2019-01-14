@@ -33,6 +33,7 @@
             <input type="hidden" id="situacao" name="situacao">
             <input type="hidden" id="idequipamento" name="idequipamento">
             <input type="hidden" id="idacessorio" name="idacessorio">
+            <input type="hidden" id="idsituacao" name="idsituacao" value=3>
             <div class="row">
                                   <div class="col-xs-2">
                       <div class="form-group">
@@ -78,7 +79,7 @@
                 <div class="form-group">
                   <label>Defeito Apresentado:</label>
 
-                  <input type="text" name="motivo" class="form-control" required>
+                  <input type="text" name="problema" class="form-control" required>
                 </div>
               </div>
 
