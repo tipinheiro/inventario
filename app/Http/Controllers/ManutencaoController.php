@@ -98,12 +98,11 @@ left join situacaos on situacaos.id = acessorios.situacaos_id');
 
   public function salvar(Request $request) {
     $manutencao = new manutencao();
-    $manutencao->tombamento = $request->input('tombamento');
-    $manutencao->descricao = $request->input('descricao');
-    $manutencao->idlocalizacao = $request->input('idlocalizacao');
-    $manutencao->idtipo_item = $request->input('idtipo');
+    $manutencao->idequipamento = $request->input('idequipamento');
+    $manutencao->idacessorio = $request->input('idacessorio');
+    $manutencao->problema = $request->input('problema');
+    $manutencao->solucao = $request->input('solucao');
     $manutencao->idsituacao = $request->input('idsituacao');
-    $manutencao->motivo = $request->input('motivo');
     $manutencao->idusuario = Auth::user()->id;
     $manutencao->save();
     return redirect()->to('/manutencao');

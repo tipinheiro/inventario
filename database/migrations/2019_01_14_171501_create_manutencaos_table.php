@@ -16,15 +16,14 @@ class CreateManutencaosTable extends Migration
         Schema::create('manutencaos', function (Blueprint $table) {
 
             $table->increments('id');
-            $table->integer('tombamento');
-            $table->integer('numserie');
-            $table->string('descricao');
-            $table->integer('idlocalizacao');
-            $table->integer('idtipo_item');
+            $table->integer('idequipamento');
+            $table->integer('idacessorio');
+            $table->string('problema');
+            $table->string('solucao');
+            $table->date('data_envio');
+            $table->date('data_retorno');
             $table->integer('idsituacao');
-            $table->string('motivo');
             $table->integer('idusuario');
-
             $table->timestamps();
             });
     }
