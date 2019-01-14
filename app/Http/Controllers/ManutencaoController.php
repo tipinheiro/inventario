@@ -16,9 +16,13 @@ class ManutencaoController extends Controller {
 
 
   public function cadastroManutencao() {
-    $equipamento = DB::select('SELECT tombamento, numero_serie, id AS idequipamento, descricao, NULL AS idacessorio  FROM equipamentos
-
-    union SELECT null as tombamento, numero_serie, null AS idequipamento, descricao, id AS idacessorio FROM acessorios');
+    $equipamento = DB::select('SELECT equipamentos.id AS idequipamento, null AS idacessorio, tombamento, numero_serie, descricao, idlocalizacao, localizacao, idsituacao, situacaos.situacao  FROM equipamentos
+left join localizacaos on localizacaos.id = equipamentos.idlocalizacao
+left join situacaos on situacaos.id = equipamentos.idsituacao
+union
+SELECT null AS idequipamento, acessorios.id AS idacessorio, null as tombamento, numero_serie, descricao, localizacaos_id, localizacaos.localizacao, situacaos.id, situacaos.situacao  FROM acessorios
+left join localizacaos on localizacaos.id = acessorios.localizacaos_id
+left join situacaos on situacaos.id = acessorios.situacaos_id');
 
     return view('cadastroManutencao')
     ->with('situacao', situacao::All())

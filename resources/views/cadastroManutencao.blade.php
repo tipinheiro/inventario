@@ -30,19 +30,22 @@
           <!-- Post -->
           <form role="form"  action="/manutencao/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <input type="hidden" id="situacao" name="situacao">
+            <input type="hidden" id="idequipamento" name="idequipamento">
+            <input type="hidden" id="idacessorio" name="idacessorio">
             <div class="row">
                                   <div class="col-xs-2">
                       <div class="form-group">
 
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
+                  <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
                 </div>
               </div>
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" required>
+                  <input type="text" id="descricao" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" required>
                 </div>
               </div>
 
@@ -164,12 +167,13 @@
       </div>
       <div class="modal-body" >
         <!-- <p>Some text in the modal.</p> -->
-        <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+        <table id="lista_equipamento" class="table table-bordered table-hover" style="cursor: pointer;">
           <thead>
             <tr>
-
+              <th>ID Equipamento</th>
+              <th>ID Acessório</th>
               <th>Tombamento</th>
-              <th>numero_serie</th>
+              <th>Num. Série</th>
               <th>Descrição</th>
               <th>Localização</th>
               <th>Situação</th>
@@ -178,18 +182,18 @@
           <tbody>
             @foreach($equipamentos as $equipamento)
             <tr>
-
+              <td>{{ $equipamento->idequipamento}}</td>
+              <td>{{ $equipamento->idacessorio}}</td>
               <td>{{ $equipamento->tombamento}}</td>
               <td>{{ $equipamento->numero_serie }}</td>
               <td>{{ $equipamento->descricao }}</td>
-              <td>{{ $equipamento->idacessorio }}</td>
-              <td>{{ $equipamento->idacessorio }}</td>
+              <td>{{ $equipamento->localizacao }}</td>
+              <td>{{ $equipamento->situacao }}</td>
             </tr>
             @endforeach
           </tbody>
           <tfoot>
             <tr>
-
               <th>Rendering engine</th>
               <th>numero_serie</th>
               <th>Platform(s)</th>
@@ -214,7 +218,7 @@
 <script lang="javascript">
 $( document ).ready(function() {
   console.log( "ready!" );
-  $('#example1').DataTable({
+  $('#lista_equipamento').DataTable({
     'info'        : false,
     'lengthChange': false,
     "language": {
@@ -230,21 +234,39 @@ $( document ).ready(function() {
             "next":       "Próximo",
             "previous":   "Anterior"
           }
-    }
+    },
+    "columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+            {
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            }
+        ]
   })
 
-  $('#example1 tbody').on('dblclick', 'tr', function () {
-    var table = $('#example1').DataTable();
+  $('#lista_equipamento tbody').on('dblclick', 'tr', function () {
+    var table = $('#lista_equipamento').DataTable();
      var data = table.row( this ).data();
-     alert( 'You clicked on '+data[0]+'\'s row' );
+     //alert( 'You clicked on '+data[0]+'\'s row' );
+     $("#idequipamento").val(data[0]);
+     $("#idacessorio").val(data[1]);
+     $("#tombamento").val(data[2]);
+     $("#descricao").val(data[4]);
+     // $("#inserirEquipamento").close();
+     $("#inserirEquipamento .close").click()
   } );
 
-  $("#pesquisa").click(function(){
-    console.log('pesquisa clicked.');
-    //$("#pessquisa").attr('active');
-    $('.nav-tabs a[href="#tab-pesquisa"]').tab('show');
-    //window.location("pesquisa");
-  });
+  // $("#pesquisa").click(function(){
+  //   console.log('pesquisa clicked.');
+  //   //$("#pessquisa").attr('active');
+  //   $('.nav-tabs a[href="#tab-pesquisa"]').tab('show');
+  //   //window.location("pesquisa");
+  // });
 });
 </script>
 @endif
