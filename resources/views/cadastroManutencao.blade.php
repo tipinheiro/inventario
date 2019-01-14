@@ -259,12 +259,11 @@ $( document ).ready(function() {
      $("#idacessorio").val(data[1]);
      $("#tombamento").val(data[2]);
      $("#descricao").val(data[4]);
-<<<<<<< HEAD
+
      $("#idsituacao").val(data[7]);
-=======
+
      $("#idlocalizacao").val(data[5]);
-     console.log(data[5]);
->>>>>>> e00430978839e7a492970b67a7e553543705313e
+
      // $("#inserirEquipamento").close();
      $("#inserirEquipamento .close").click();
   } );
