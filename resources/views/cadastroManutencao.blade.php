@@ -63,16 +63,12 @@
                   </div>
                 </div>
                 <div class="col-xs-2">
-                  <div class="form-group">
-                    <label>Tipo:</label>
-                    <select class="form-control" name="idtipo" required>
-                      <option></option>
-                      @foreach($tipos as $tipo)
-                      <option value="{{ $tipo->id }}">{{ $tipo->descricao }}</option>
-                      @endforeach
-                    </select>
-                  </div>
+                <div class="form-group">
+                  <label>Data de Envio:</label>
+
+                  <input type="date" name="data_envio" class="form-control" required>
                 </div>
+              </div>
           </div>
 
                 <div class="col-xs-10">
@@ -82,9 +78,7 @@
                   <input type="text" name="problema" class="form-control" required>
                 </div>
               </div>
-
-
-            </div>
+                      </div>
 
               <div class="box-footer">
                   <a href=/manutencao><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
@@ -158,7 +152,7 @@
 
 
 <div id="inserirEquipamento" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="width:60%">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -168,7 +162,7 @@
       </div>
       <div class="modal-body" >
         <!-- <p>Some text in the modal.</p> -->
-        <table id="lista_equipamento" class="table table-bordered table-hover" style="cursor: pointer;">
+        <table id="lista_equipamento" class="table table-bordered table-hover" style="cursor: pointer; width:100%">
           <thead>
             <tr>
               <th>ID Equipamento</th>
@@ -258,6 +252,7 @@ $( document ).ready(function() {
      $("#idacessorio").val(data[1]);
      $("#tombamento").val(data[2]);
      $("#descricao").val(data[4]);
+     $("#idsituacao").val(data[7]);
      // $("#inserirEquipamento").close();
      $("#inserirEquipamento .close").click()
   } );

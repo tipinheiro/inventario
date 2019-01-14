@@ -21,7 +21,7 @@ class CreateManutencaosTable extends Migration
             $table->string('problema');
             $table->string('solucao')->nullable();
             $table->date('data_envio');
-            $table->date('data_retorno');
+            $table->date('data_retorno')->nullable();
             $table->integer('idsituacao');
             $table->integer('idusuario');
             $table->timestamps();
