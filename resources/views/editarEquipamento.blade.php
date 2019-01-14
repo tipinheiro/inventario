@@ -229,37 +229,36 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Tombamento</th>
-                  <th>Num. Série</th>
-                  <th>Descrição</th>
-                  <th>Tipo</th>
-                  <th>Localização</th>
-                  <th>Data de Cadastro</th>
-                  <th>Ultima Movimentação</th>
+                  <th>Problema</th>
+                  <th>Situação</th>
+                  <th>Solução</th>
+                  <th>Data de Envio</th>
+                  <th>Data de Retorno</th>
+            
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>{{ $equipamento->id }}</td>
-                  <td>{{ $equipamento->tombamento }}</td>
-                  <td>{{ $equipamento->numero_serie }}</td>
-                  <td>{{ $equipamento->descricao }}</td>
-                  <td>{{ $equipamento->idtipo_item }}</td>
-                  <td>{{ $equipamento->idlocalizacao }}</td>
-                  <td>{{ $equipamento->created_at }}</td>
-                  <td>{{ $equipamento->updated_at}}</td>
+                  @foreach($manutencaos as $manutencao)
+                  <td>{{ $manutencao->id }}</td>
+                  <td>{{ $manutencao->problema }}</td>
+                  <td>{{ $manutencao->idsituacao }}</td>
+                  <td>{{ $manutencao->solucao }}</td>
+                  <td>{{ $manutencao->data_envio }}</td>
+                  <td>{{ $manutencao->data_retorno }}</td>
+
+                  @endforeach
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Localização</th>
-                  <th>kerneldark</th>
-                  <th>Status</th>
+                  <th>ID</th>
+                  <th>Problema</th>
+                  <th>Situação</th>
+                  <th>Solução</th>
+                  <th>Data de Envio</th>
+                  <th>Data de Retorno</th>
+
                 </tr>
               </tfoot>
             </table>

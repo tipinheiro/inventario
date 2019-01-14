@@ -35,14 +35,12 @@
             <input type="hidden" id="idacessorio" name="idacessorio">
             <input type="hidden" id="idsituacao" name="idsituacao" value=3>
             <div class="row">
-                                  <div class="col-xs-2">
-                      <div class="form-group">
-
-                  <label>Tombamento:</label>
-
-                  <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
-                </div>
-              </div>
+            <div class="col-xs-2">
+            <div class="form-group">
+            <label>Tombamento:</label>
+            <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
+            </div>
+            </div>
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Descrição:</label>
@@ -94,12 +92,13 @@
               <thead>
               <tr>
                 <th>ID</th>
-                <th>Tombamento</th>
-                <th>Num. Série</th>
-                <th>Descrição</th>
-                <th>Tipo</th>
-                <th>Localização</th>
-                <th>Defeito Apresentado</th>
+                <th>ID Equipamento</th>
+                <th>ID Acessório</th>
+                <th>Defeito</th>
+                <th>Solução</th>
+                <th>Situação</th>
+                <th>Data Envio</th>
+                <th>Data Retorno</th>
                 <th>Relatório</th>
               </tr>
               </thead>
@@ -107,25 +106,27 @@
                 @foreach($manutencaos as $manutencao)
                 <tr>
                   <td>{{ $manutencao->id }}</td>
-                  <td>{{ $manutencao->tombamento}}</td>
-                  <td>{{ $manutencao->descricao }}</td>
-                  <td>{{ $manutencao->idlocalizacao }}</td>
-                  <td>{{ $manutencao->idtipo_item }}</td>
+                  <td>{{ $manutencao->idequipamento }}</td>
+                  <td>{{ $manutencao->idacessorio}}</td>
+                  <td>{{ $manutencao->problema }}</td>
+                  <td>{{ $manutencao->solucao }}</td>
                   <td>{{ $manutencao->idsituacao }}</td>
-                  <td>{{ $manutencao->motivo }}</td>
-                  <td><button type="submit" class="btn btn-info pull-right glyphicon">Imprimir</button></td>
+                  <td>{{ $manutencao->data_envio }}</td>
+                  <td>{{ $manutencao->data_retorno }}</td>
+                  <td><button type="submit"  class="btn btn-info pull-right glyphicon">Imprimir</button></td>
                 </tr>
                 @endforeach
               </tbody>
               <tfoot>
               <tr>
                 <th>ID</th>
-                <th>Tombamento</th>
-                <th>Num. Série</th>
-                <th>Descrição</th>
-                <th>Tipo</th>
-                <th>Localização</th>
-                <th>Defeito Apresentado</th>
+                <th>ID Equipamento</th>
+                <th>ID Acessório</th>
+                <th>Defeito</th>
+                <th>Solução</th>
+                <th>Situação</th>
+                <th>Data Envio</th>
+                <th>Data Retorno</th>
                 <th>Relatório</th>
               </tr>
               </tfoot>
@@ -263,6 +264,7 @@ $( document ).ready(function() {
      $("#idsituacao").val(data[7]);
 
      $("#idlocalizacao").val(data[5]);
+
 
      // $("#inserirEquipamento").close();
      $("#inserirEquipamento .close").click();

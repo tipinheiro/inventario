@@ -24,11 +24,13 @@ class EquipamentoController extends Controller {
     $equipamento = Equipamento::find($id);
     // $associados = DB::table('acessorios')->where('equipamentos_id', '=' $id);
     $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
+    $manutencaos = DB::table('manutencaos')->where('idequipamento', '=', $id)->get();
     return view('editarEquipamento')
     ->with('equipamento', $equipamento)
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
     ->with('acessorios', acessorios::All())
+    ->with('manutencaos', $manutencaos)
     ->with('associados', $associados)
     ->with('tipos', tipo_item::All());
   }
@@ -40,6 +42,7 @@ class EquipamentoController extends Controller {
     ->join('situacaos', 'equipamentos.idsituacao', '=', 'situacaos.id')
     ->join('localizacaos', 'equipamentos.idlocalizacao', '=', 'localizacaos.id')
     ->join('tipo_items', 'equipamentos.idtipo_item', '=', 'tipo_items.id')
+
     ->select('equipamentos.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
     ->get();
 
