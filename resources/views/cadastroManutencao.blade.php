@@ -88,7 +88,7 @@
           </form>
 
           <div class="box-body">
-            <table id="example1" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
+            <table id="listamanutencao" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
               <thead>
               <tr>
                 <th>ID</th>
@@ -113,7 +113,7 @@
                   <td>{{ $manutencao->idsituacao }}</td>
                   <td>{{ $manutencao->data_envio }}</td>
                   <td>{{ $manutencao->data_retorno }}</td>
-                  <td><button type="submit"  class="btn btn-info pull-right glyphicon">Imprimir</button></td>
+                  <td><a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir</button></a></td>
                 </tr>
                 @endforeach
               </tbody>
@@ -270,12 +270,8 @@ $( document ).ready(function() {
      $("#inserirEquipamento .close").click();
   } );
 
-  // $("#pesquisa").click(function(){
-  //   console.log('pesquisa clicked.');
-  //   //$("#pessquisa").attr('active');
-  //   $('.nav-tabs a[href="#tab-pesquisa"]').tab('show');
-  //   //window.location("pesquisa");
-  // });
+
+
 });
 </script>
 @endif

@@ -45,6 +45,8 @@ Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
 
 Route::get('/manutencao', 'ManutencaoController@cadastroManutencao');
 
+Route::get('/manutencao/{id}/imprimir', 'ManutencaoController@imprimirManutencao');
+
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
 Route::get('/equipamento/{id}/editar', 'EquipamentoController@editar');

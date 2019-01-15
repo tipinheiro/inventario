@@ -65,6 +65,21 @@ left join situacaos on situacaos.id = acessorios.situacaos_id');
     //return view('listaEquipamento', ['manutencaos' => manutencaos]);
   }
 
+
+  public function imprimirManutencao($id) {
+    $manutencao = manutencao::find($id);
+    $equipamentos = DB::table('equipamentos')->where('id', '=', $manutencao->idequipamento)->get();
+    $acessorios = DB::table('acessorios')->where('id', '=', $manutencao->idacessorio)->get();
+
+    return view('imprimirManutencao')
+    ->with('manutencao', $manutencao)
+    ->with('equipamentos', $equipamentos)
+    ->with('acessorios', $acessorios);
+  }
+
+
+
+
   public function mostra() {
     //return '<h1>listagem de manutencaos</h1>';
     $id = Request::route('id', '0');
