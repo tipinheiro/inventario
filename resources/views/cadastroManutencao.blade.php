@@ -150,8 +150,6 @@
 </div>
 <!-- /.box -->
 
-
-
 <div id="inserirEquipamento" class="modal fade" role="dialog">
   <div class="modal-dialog" style="width:60%">
 
