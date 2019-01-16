@@ -10,6 +10,7 @@ use inventario\acessorios;
 use inventario\manutencao;
 use inventario\Relatorios\MyReport;
 use Illuminate\Support\Facades\Auth;
+use PDF;
 
 class ManutencaoController extends Controller {
 
@@ -71,10 +72,28 @@ left join situacaos on situacaos.id = acessorios.situacaos_id');
     $equipamentos = DB::table('equipamentos')->where('id', '=', $manutencao->idequipamento)->get();
     $acessorios = DB::table('acessorios')->where('id', '=', $manutencao->idacessorio)->get();
 
-    return view('imprimirManutencao')
-    ->with('manutencao', $manutencao)
-    ->with('equipamentos', $equipamentos)
-    ->with('acessorios', $acessorios);
+    // return \PDF::loadView('site.certificate.certificate', compact('products'))
+    //Inventario          // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+    //             ->download('nome-arquivo-pdf-gerado.pdf');
+
+    // $pdf = PDF::loadView(view('imprimirManutencao'), $equipamentos);
+    //$pdf->loadHTML($view);
+    // return $pdf->stream('teste.pdf');
+
+    // $a = view('imprimirManutencao');
+
+    $pdf = PDF::loadView('imprimirManutencao', ['manutencao' => $manutencao, 'equipamentos' => $equipamentos]);
+    return $pdf->stream();
+
+    // return PDF::loadView('imprimirManutencao', $equipamentos)->stream('teste.pdf');
+    // ->with('manutencao', $manutencao)
+    // ->with('equipamentos', $equipamentos)
+    // ->with('acessorios', $acessorios))->stream('teste.pdf');
+
+    // return view('imprimirManutencao')
+    // ->with('manutencao', $manutencao)
+    // ->with('equipamentos', $equipamentos)
+    // ->with('acessorios', $acessorios);
   }
 
 
