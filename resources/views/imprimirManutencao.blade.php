@@ -1,28 +1,32 @@
-
+<html>
 <head>
   <title>Relatório de Atendimento Técnico</title>
+  <style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+    text-align: center;
+  }
+  p, h2, h3{
+    text-align: center;
+  }
+  footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
+}
+  </style>
 </head>
 
-@extends('adminlte::master')
-
-@yield('css')
-
-@section('body')
-
-<div class="imgcontainer">
-    <div class="login-logo">
-    <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}"><b>UFMA</b> - Campus Pinheiro</a>
-  </div>
-  <p {{ trans('adminlte::adminlte.login_message') }}</p>
-  </div>
-
-<h3 align="center">Lista de Equipamentos com Defeito</h3>
+<h2><b>UFMA</b> - Campus Pinheiro</h2>
+<h3>Lista de Equipamentos com Defeito</h3>
 
 
-<table class="table">
+<table style="width:100%">
   <thead>
   <tr>
-
+    <th>#</th>
     <th>Tombamento</th>
     <th>Número de serie</th>
     <th>Descrição</th>
@@ -32,11 +36,10 @@
   </tr>
   </thead>
   <tbody>
-
     <tr>
-
-
+      <td> {{$manutencao->id}}</td>
       @foreach($equipamentos as $equipamento)
+
       <td> {{$equipamento->tombamento}}</td>
       <td> {{$equipamento->numero_serie}}</td>
       <td> {{$equipamento->descricao}}</td>
@@ -49,10 +52,13 @@
       <td>{{$manutencao->problema}}</td>
       <td>{{$manutencao->data_envio}}</td>
       <td>{{$manutencao->data_retorno}}</td>
-
     </tr>
 
   </tbody>
 </table>
+<footer>
+  <p>_______________________________________________</p>
+  <p>Assinatura do Responsável</p>
+</footer>
 
-@stop
+</html>

@@ -113,7 +113,7 @@
                   <td>{{ $manutencao->idsituacao }}</td>
                   <td>{{ $manutencao->data_envio }}</td>
                   <td>{{ $manutencao->data_retorno }}</td>
-                  <td><a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir</button></a></td>
+                  <td><input type="checkbox" id="relatorio" name="relatorio" value="{{ $manutencao->id }}"><a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir</button></a></td>
                 </tr>
                 @endforeach
               </tbody>
@@ -131,6 +131,9 @@
               </tr>
               </tfoot>
             </table>
+
+            <a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir Seleção</button></a>
+
           </div>
 
 

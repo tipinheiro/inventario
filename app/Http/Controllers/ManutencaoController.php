@@ -82,7 +82,7 @@ left join situacaos on situacaos.id = acessorios.situacaos_id');
 
     // $a = view('imprimirManutencao');
 
-    $pdf = PDF::loadView('imprimirManutencao', ['manutencao' => $manutencao, 'equipamentos' => $equipamentos]);
+    $pdf = PDF::loadView('imprimirManutencao', ['manutencao' => $manutencao, 'equipamentos' => $equipamentos, 'acessorios'=>$acessorios]);
     return $pdf->stream();
 
     // return PDF::loadView('imprimirManutencao', $equipamentos)->stream('teste.pdf');
