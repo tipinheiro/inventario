@@ -132,7 +132,7 @@
               </tfoot>
             </table>
 
-            <a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir Seleção</button></a>
+          <input type="submit" title="Imprimir Seleção" value="Imprimir Seleção">
 
           </div>
 
@@ -193,11 +193,14 @@
           </tbody>
           <tfoot>
             <tr>
-              <th>Rendering engine</th>
-              <th>numero_serie</th>
-              <th>Platform(s)</th>
-              <th>Engine version</th>
-              <th>Status</th>
+              <th>ID Equipamento</th>
+              <th>ID Acessório</th>
+              <th>Tombamento</th>
+              <th>Num. Série</th>
+              <th>Descrição</th>
+              <th>ID Localização</th>
+              <th>Localização</th>
+              <th>Situação</th>
             </tr>
           </tfoot>
         </table>
@@ -252,6 +255,26 @@ $( document ).ready(function() {
             }
         ]
   })
+
+  $('#listamanutencao').DataTable({
+    'info'        : false,
+    'lengthChange': false,
+    "language": {
+          "lengthMenu": "Display _MENU_ records per page",
+          "zeroRecords": "Nothing found - sorry",
+          "info": "Showing page _PAGE_ of _PAGES_",
+          "infoEmpty": "No records available",
+          "search": "Busca",
+          "infoFiltered": "(filtered from _MAX_ total records)",
+          "paginate": {
+            "first":      "Primeiro",
+            "last":       "Último",
+            "next":       "Próximo",
+            "previous":   "Anterior"
+          }
+    },
+  })
+
 
   $('#lista_equipamento tbody').on('dblclick', 'tr', function () {
     var table = $('#lista_equipamento').DataTable();

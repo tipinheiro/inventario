@@ -56,6 +56,7 @@
 
   </tbody>
 </table>
+
 <footer>
   <p>_______________________________________________</p>
   <p>Assinatura do Responsável</p>

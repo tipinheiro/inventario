@@ -20,10 +20,12 @@ class ManutencaoController extends Controller {
     $equipamento = DB::select('SELECT equipamentos.id AS idequipamento, null AS idacessorio, tombamento, numero_serie, descricao, idlocalizacao, localizacao, idsituacao, situacaos.situacao  FROM equipamentos
 left join localizacaos on localizacaos.id = equipamentos.idlocalizacao
 left join situacaos on situacaos.id = equipamentos.idsituacao
+where idsituacao = 1
 union
-SELECT null AS idequipamento, acessorios.id AS idacessorio, null as tombamento, numero_serie, descricao, localizacaos_id, localizacaos.localizacao, situacaos.id, situacaos.situacao  FROM acessorios
+SELECT null AS idequipamento, acessorios.id AS idacessorio, null as tombamento, numero_serie, descricao, localizacaos_id, localizacaos.localizacao, situacaos_id, situacaos.situacao  FROM acessorios
 left join localizacaos on localizacaos.id = acessorios.localizacaos_id
-left join situacaos on situacaos.id = acessorios.situacaos_id');
+left join situacaos on situacaos.id = acessorios.situacaos_id
+where situacaos_id = 1');
 
     return view('cadastroManutencao')
     ->with('situacao', situacao::All())
@@ -138,6 +140,16 @@ left join situacaos on situacaos.id = acessorios.situacaos_id');
     $manutencao->solucao = $request->input('solucao');
     $manutencao->data_envio = $request->input('data_envio');
     $manutencao->idsituacao = 3;
+    if (!empty($request->input('idequipamento'))){
+    $equipamento = Equipamento::find($request->input('idequipamento'));
+    $equipamento->idsituacao = 3;
+    $equipamento->update();
+    }
+    if (!empty($request->input('idacessorio'))){
+    $acessorio = acessorios::find($request->input('idacessorio'));
+    $acessorio->situacaos_id = 3;
+    $acessorio->update();
+    }
     $manutencao->idusuario = Auth::user()->id;
     $manutencao->save();
     return redirect()->to('/manutencao');

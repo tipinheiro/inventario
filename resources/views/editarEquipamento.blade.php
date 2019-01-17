@@ -82,12 +82,11 @@
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Situação:</label>
-                  <select class="form-control" name="idsituacao">
 
                     @foreach($situacao as $s)
-                    <option value="{{ $s->id }}"@if($s->id == $equipamento->idsituacao) selected="selected" @endif>{{ $s->situacao }}</option>
+                    @if($s->id == $equipamento->idsituacao) <input readonly="readonly" type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $s->situacao }}"> @endif
                     @endforeach
-                  </select>
+
                 </div>
               </div>
             </div>
@@ -234,7 +233,7 @@
                   <th>Solução</th>
                   <th>Data de Envio</th>
                   <th>Data de Retorno</th>
-            
+
                 </tr>
               </thead>
               <tbody>
