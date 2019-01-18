@@ -80,26 +80,12 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Situação:</label>
-                  <select class="form-control" name="idsituacao" required>
-                    <option></option>
-                    @foreach($situacao as $s)
-                    <option value="{{ $s->id }}">{{ $s->situacao }}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
+
             </div>
               <div class="box-footer">
                   <a href=/equipamentos><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
-                <button onclick="funcao()" type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
-            <script>
-            function funcao() {
-              alert("Item cadastrado!");
-            }
-            </script>
+                <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
+
                 </div>
 
             <!-- box-footer  -->

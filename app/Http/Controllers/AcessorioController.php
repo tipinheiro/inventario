@@ -21,6 +21,7 @@ class AcessorioController extends Controller {
   public function editar($id) {
     $acessorio = acessorios::find($id);
     return view('editarAcessorio')
+
     ->with('acessorio', $acessorio)
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
@@ -74,7 +75,6 @@ class AcessorioController extends Controller {
     $acessorio->descricao = $request->input('descricao');
     $acessorio->tipo_items_id = $request->input('idtipo');
     $acessorio->localizacaos_id = $request->input('idlocalizacao');
-    $acessorio->situacaos_id = $request->input('idsituacao');
     $acessorio->update();
     return redirect()->to('/acessorios');
   }

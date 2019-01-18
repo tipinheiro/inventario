@@ -66,12 +66,9 @@
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Situação:</label>
-                  <select class="form-control" name="idsituacao">
-
-                    @foreach($situacao as $s)
-                    <option value="{{ $s->id }}"@if($s->id == $acessorio->situacaos_id) selected="selected" @endif>{{ $s->situacao }}</option>
-                    @endforeach
-                  </select>
+                  @foreach($situacao as $s)
+                  @if($s->id == $acessorio->situacaos_id) <input readonly="readonly" type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $s->situacao }}"> @endif
+                  @endforeach
                 </div>
               </div>
             </div>

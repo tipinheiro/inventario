@@ -13,10 +13,12 @@ use inventario\Relatorios\MyReport;
 class EquipamentoController extends Controller {
 
   public function cadastroEquipamento() {
+      $acessorios = DB::table('acessorios')->whereNull('equipamentos_id')->get();
+
     return view('cadastroEquipamento')
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
-    ->with('acessorios', acessorios::All())
+    ->with('acessorios', $acessorios)
     ->with('tipos', tipo_item::All());
   }
 
@@ -24,12 +26,23 @@ class EquipamentoController extends Controller {
     $equipamento = Equipamento::find($id);
     // $associados = DB::table('acessorios')->where('equipamentos_id', '=' $id);
     $associados = DB::table('acessorios')->where('equipamentos_id', '=', $id)->get();
-    $manutencaos = DB::table('manutencaos')->where('idequipamento', '=', $id)->get();
+    $manutencaos = DB::table('manutencaos')->where('idequipamento', '=', $id)
+    ->join('situacaos', 'manutencaos.idsituacao', '=', 'situacaos.id')->get();
+
+    //$acessorios = DB::table('acessorios')->whereNull('equipamentos_id')->get();
+    $acessorios = DB::table('acessorios')
+    ->join('situacaos', 'acessorios.situacaos_id', '=', 'situacaos.id')
+    ->join('localizacaos', 'acessorios.localizacaos_id', '=', 'localizacaos.id')
+    ->join('tipo_items', 'acessorios.tipo_items_id', '=', 'tipo_items.id')
+
+    ->select('acessorios.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
+    ->whereNull('equipamentos_id')->get();
+
     return view('editarEquipamento')
     ->with('equipamento', $equipamento)
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
-    ->with('acessorios', acessorios::All())
+    ->with('acessorios',  $acessorios)
     ->with('manutencaos', $manutencaos)
     ->with('associados', $associados)
     ->with('tipos', tipo_item::All());
@@ -92,7 +105,7 @@ class EquipamentoController extends Controller {
     $equipamento->descricao = $request->input('descricao');
     $equipamento->idtipo_item = $request->input('idtipo');
     $equipamento->idlocalizacao = $request->input('idlocalizacao');
-    $equipamento->idsituacao = $request->input('idsituacao');
+    $equipamento->idsituacao = 1;
     $equipamento->save();
     return redirect()->to('/equipamentos');
   }
@@ -105,7 +118,6 @@ class EquipamentoController extends Controller {
     $equipamento->descricao = $request->input('descricao');
     $equipamento->idtipo_item = $request->input('idtipo');
     $equipamento->idlocalizacao = $request->input('idlocalizacao');
-    $equipamento->idsituacao = $request->input('idsituacao');
     $equipamento->update();
     return redirect()->to('/equipamentos');
   }

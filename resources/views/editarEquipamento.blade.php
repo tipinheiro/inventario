@@ -156,7 +156,7 @@
           <!-- /.box-body -->
           <!-- Modal -->
           <div id="inserirAcessorio" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="width:60%">
 
               <!-- Modal content-->
               <div class="modal-content">
@@ -166,7 +166,7 @@
                 </div>
                 <div class="modal-body" >
                   <!-- <p>Some text in the modal.</p> -->
-                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer; width:100%">
                     <thead>
                       <tr>
                         <th>ID</th>
@@ -183,9 +183,10 @@
                         <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
                         <td>{{ $acessorio->descricao }}</td>
-                        <td>{{ $acessorio->tipo_items_id }}</td>
-                        <td>{{ $acessorio->localizacaos_id }}</td>
-                        <td>{{ $acessorio->situacaos_id }}</td>
+                        <td>{{ $acessorio->tipoitem }}</td>
+                        <td>{{ $acessorio->localizacao }}</td>
+                        <td>{{ $acessorio->situacao }}</td>
+
                       </tr>
                       @endforeach
                     </tbody>
@@ -224,6 +225,7 @@
           -->
           <!-- /.box-header -->
           <div class="box-body">
+
             <table id="tabela_movimentacoes" class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -237,17 +239,16 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
                   @foreach($manutencaos as $manutencao)
+                <tr>
                   <td>{{ $manutencao->id }}</td>
                   <td>{{ $manutencao->problema }}</td>
-                  <td>{{ $manutencao->idsituacao }}</td>
+                  <td>{{ $manutencao->situacao }}</td>
                   <td>{{ $manutencao->solucao }}</td>
                   <td>{{ $manutencao->data_envio }}</td>
                   <td>{{ $manutencao->data_retorno }}</td>
-
-                  @endforeach
                 </tr>
+                @endforeach
               </tbody>
               <tfoot>
                 <tr>
