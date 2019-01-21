@@ -20,22 +20,16 @@ use Route;
     <h3 class="box-title">Acessórios</h3>
   </div>
   <div class="col-xs-2">
-<!-- <button type="button" class="btn btn-block btn-success btn-sm">Novo</button> -->
-<!-- <a href=/equipamento><button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-fw fa-plus box-title"></i>Novo</button></a> -->
+
 <h3 class="box-title pull-right"><a href=/acessorio><i class="fa fa-fw fa-plus">Novo</i></a></h3>
 </div>
   </div>
   </div>
   <div class="box-body">
       <div class="box">
-        <!--
-            <div class="box-header">
-              <h3 class="box-title">Data Table With Full Features</h3>
-            </div>
-            -->
-            <!-- /.box-header -->
+
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
+              <table id="listaacessorio" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
                 <thead>
                 <tr>
                   <th>ID</th>
@@ -60,12 +54,12 @@ use Route;
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                  <th>Status</th>
+                  <th>ID</th>
+                  <th>Num. Série</th>
+                  <th>Descrição</th>
+                  <th>Tipo</th>
+                  <th>Localização</th>
+                  <th>Situação</th>
                 </tr>
                 </tfoot>
               </table>
@@ -78,7 +72,7 @@ use Route;
       <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
       <script>
   $(function () {
-    $('#example1').DataTable({
+    $('#listaacessorio').DataTable({
       "columnDefs": [
           {
               "targets": [ 0 ],
@@ -105,8 +99,8 @@ use Route;
 
     })
 
-    $('#example1 tbody').on('click', 'tr', function () {
-       var table = $('#example1').DataTable();
+    $('#listaacessorio tbody').on('click', 'tr', function () {
+       var table = $('#listaacessorio').DataTable();
        var data = table.row( this ).data();
        //alert( 'You clicked on '+data[0]+'\'s row' );
        window.location.href = "/acessorio/"+data[0]+"/editar";
