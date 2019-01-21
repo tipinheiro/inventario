@@ -55,7 +55,6 @@ class EquipamentoController extends Controller {
     ->join('situacaos', 'equipamentos.idsituacao', '=', 'situacaos.id')
     ->join('localizacaos', 'equipamentos.idlocalizacao', '=', 'localizacaos.id')
     ->join('tipo_items', 'equipamentos.idtipo_item', '=', 'tipo_items.id')
-
     ->select('equipamentos.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
     ->get();
 

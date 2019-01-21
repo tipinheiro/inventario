@@ -17,15 +17,12 @@
     <!--start tab-->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#activity" data-toggle="tab">Manutenção Equipamento</a></li>
+        <li class="active"><a href="#manutencao" data-toggle="tab">Manutenção Equipamento</a></li>
 
-        <!-- <li><a href="#acessorios" data-toggle="tab">Acessórios</a></li> -->
-        <!-- <li><a href="#settings" data-toggle="tab">Movimentações</a></li> -->
-        <!-- <li><a href="#tab-pesquisa" data-toggle="tab">Pesquisa</a></li> -->
       </ul>
       <div class="tab-content">
 
-        <div class="active tab-pane" id="activity">
+        <div class="active tab-pane" id="manutencao">
 
           <!-- Post -->
           <form role="form"  action="/manutencao/salvar" method="post">
@@ -35,19 +32,18 @@
             <input type="hidden" id="idacessorio" name="idacessorio">
             <input type="hidden" id="idsituacao" name="idsituacao" value=3>
             <div class="row">
-            <div class="col-xs-2">
-            <div class="form-group">
-            <label>Tombamento:</label>
-            <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
-            </div>
-            </div>
+              <div class="col-xs-2">
+                <div class="form-group">
+                  <label>Tombamento:</label>
+                  <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
+                </div>
+              </div>
               <div class="col-xs-4">
                 <div class="form-group">
                   <label>Descrição:</label>
                   <input type="text" id="descricao" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" required>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-xs-2">
                   <div class="form-group">
@@ -61,46 +57,40 @@
                   </div>
                 </div>
                 <div class="col-xs-2">
-                <div class="form-group">
-                  <label>Data de Envio:</label>
-
-                  <input type="date" name="data_envio" class="form-control" required>
+                  <div class="form-group">
+                    <label>Data de Envio:</label>
+                    <input type="date" name="data_envio" class="form-control" required>
+                  </div>
                 </div>
               </div>
-          </div>
-
-                <div class="col-xs-10">
+              <div class="col-xs-10">
                 <div class="form-group">
                   <label>Defeito Apresentado:</label>
-
                   <input type="text" name="problema" class="form-control" required>
                 </div>
               </div>
-                      </div>
-
-              <div class="box-footer">
-                  <a href=/manutencao><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
-                <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
-
-                </div>
-
+            </div>
+            <div class="box-footer">
+              <a href=/manutencao><button type="button" class="btn btn-danger glyphicon glyphicon-remove"> Cancelar</button></a>
+              <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok"> Salvar</button>
+            </div>
             <!-- box-footer  -->
           </form>
 
           <div class="box-body">
             <table id="listamanutencao" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
               <thead>
-              <tr>
-                <th>ID</th>
-                <th>ID Equipamento</th>
-                <th>ID Acessório</th>
-                <th>Defeito</th>
-                <th>Solução</th>
-                <th>Situação</th>
-                <th>Data Envio</th>
-                <th>Data Retorno</th>
-                <th>Relatório</th>
-              </tr>
+                <tr>
+                  <th>ID</th>
+                  <th>ID Equipamento</th>
+                  <th>ID Acessório</th>
+                  <th>Defeito</th>
+                  <th>Solução</th>
+                  <th>Situação</th>
+                  <th>Data Envio</th>
+                  <th>Data Retorno</th>
+                  <th>Relatório</th>
+                </tr>
               </thead>
               <tbody>
                 @foreach($manutencaos as $manutencao)
@@ -118,35 +108,27 @@
                 @endforeach
               </tbody>
               <tfoot>
-              <tr>
-                <th>ID</th>
-                <th>ID Equipamento</th>
-                <th>ID Acessório</th>
-                <th>Defeito</th>
-                <th>Solução</th>
-                <th>Situação</th>
-                <th>Data Envio</th>
-                <th>Data Retorno</th>
-                <th>Relatório</th>
-              </tr>
+                <tr>
+                  <th>ID</th>
+                  <th>ID Equipamento</th>
+                  <th>ID Acessório</th>
+                  <th>Defeito</th>
+                  <th>Solução</th>
+                  <th>Situação</th>
+                  <th>Data Envio</th>
+                  <th>Data Retorno</th>
+                  <th>Relatório</th>
+                </tr>
               </tfoot>
             </table>
-
-          <input type="submit" title="Imprimir Seleção" value="Imprimir Seleção">
-
+            <input type="submit" title="Imprimir Seleção" value="Imprimir Seleção">
           </div>
-
-
-
-
         </div>
         <!-- /.tab-pane -->
-
       </div>
       <!-- /.tab-content -->
     </div>
     <!--end start tab-->
-
     <!-- /input-group -->
   </div>
   <!-- /.box-body -->
@@ -215,7 +197,6 @@
 </div>
 
 
-
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
 $( document ).ready(function() {
@@ -224,77 +205,70 @@ $( document ).ready(function() {
     'info'        : false,
     'lengthChange': false,
     "language": {
-          "lengthMenu": "Display _MENU_ records per page",
-          "zeroRecords": "Nothing found - sorry",
-          "info": "Showing page _PAGE_ of _PAGES_",
-          "infoEmpty": "No records available",
-          "search": "Busca",
-          "infoFiltered": "(filtered from _MAX_ total records)",
-          "paginate": {
-            "first":      "Primeiro",
-            "last":       "Último",
-            "next":       "Próximo",
-            "previous":   "Anterior"
-          }
+      "lengthMenu": "Display _MENU_ records per page",
+      "zeroRecords": "Nothing found - sorry",
+      "info": "Showing page _PAGE_ of _PAGES_",
+      "infoEmpty": "No records available",
+      "search": "Busca",
+      "infoFiltered": "(filtered from _MAX_ total records)",
+      "paginate": {
+        "first":      "Primeiro",
+        "last":       "Último",
+        "next":       "Próximo",
+        "previous":   "Anterior"
+      }
     },
     "columnDefs": [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-                "searchable": false
-            },
-            {
-                "targets": [ 1 ],
-                "visible": false,
-                "searchable": false
-            },
-            {
-                "targets": [ 5 ],
-                "visible": false,
-                "searchable": false
-            }
-        ]
+      {
+        "targets": [ 0 ],
+        "visible": false,
+        "searchable": false
+      },
+      {
+        "targets": [ 1 ],
+        "visible": false,
+        "searchable": false
+      },
+      {
+        "targets": [ 5 ],
+        "visible": false,
+        "searchable": false
+      }
+    ]
   })
 
   $('#listamanutencao').DataTable({
     'info'        : false,
     'lengthChange': false,
     "language": {
-          "lengthMenu": "Display _MENU_ records per page",
-          "zeroRecords": "Nothing found - sorry",
-          "info": "Showing page _PAGE_ of _PAGES_",
-          "infoEmpty": "No records available",
-          "search": "Busca",
-          "infoFiltered": "(filtered from _MAX_ total records)",
-          "paginate": {
-            "first":      "Primeiro",
-            "last":       "Último",
-            "next":       "Próximo",
-            "previous":   "Anterior"
-          }
+      "lengthMenu": "Display _MENU_ records per page",
+      "zeroRecords": "Nothing found - sorry",
+      "info": "Showing page _PAGE_ of _PAGES_",
+      "infoEmpty": "No records available",
+      "search": "Busca",
+      "infoFiltered": "(filtered from _MAX_ total records)",
+      "paginate": {
+        "first":      "Primeiro",
+        "last":       "Último",
+        "next":       "Próximo",
+        "previous":   "Anterior"
+      }
     },
   })
 
-
   $('#lista_equipamento tbody').on('dblclick', 'tr', function () {
     var table = $('#lista_equipamento').DataTable();
-     var data = table.row( this ).data();
-     //alert( 'You clicked on '+data[0]+'\'s row' );
-     $("#idequipamento").val(data[0]);
-     $("#idacessorio").val(data[1]);
-     $("#tombamento").val(data[2]);
-     $("#descricao").val(data[4]);
-
-     $("#idsituacao").val(data[7]);
-
-     $("#idlocalizacao").val(data[5]);
-
-
-     // $("#inserirEquipamento").close();
-     $("#inserirEquipamento .close").click();
+    var data = table.row( this ).data();
+    //alert( 'You clicked on '+data[0]+'\'s row' );
+    $("#idequipamento").val(data[0]);
+    $("#idacessorio").val(data[1]);
+    $("#tombamento").val(data[2]);
+    $("#descricao").val(data[4]);
+    $("#idsituacao").val(data[7]);
+    $("#idlocalizacao").val(data[5]);
+    // $("#inserirEquipamento").close();
+    $("#inserirEquipamento .close").click();
   } );
-
-
 
 });
 </script>
