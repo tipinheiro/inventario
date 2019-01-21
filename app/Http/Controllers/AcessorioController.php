@@ -79,6 +79,16 @@ class AcessorioController extends Controller {
     return redirect()->to('/acessorios');
   }
 
+  public function nao_associados() {
+    $nao_associados = DB::table('acessorios')
+    ->join('tipo_items', 'acessorios.tipo_items_id', '=', 'tipo_items.id')
+    ->join('localizacaos', 'acessorios.localizacaos_id', '=', 'localizacaos.id')
+    ->join('situacaos', 'acessorios.situacaos_id', '=', 'situacaos.id')
+    ->select('acessorios.id', 'acessorios.numero_serie', 'acessorios.descricao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao as localizacao', 'situacaos.situacao as situacao')
+    ->whereNull('equipamentos_id')->get();
+    return Response::json(['data'=>$nao_associados], 200);
+  }
+
   public function associar(Request $request) {
     $data = $request->json()->all();
     // $acessorio = acessorios::find($data['id']);
