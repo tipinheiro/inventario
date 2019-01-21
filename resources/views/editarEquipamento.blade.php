@@ -93,14 +93,9 @@
 
             <div class="box-footer">
               <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
-              <button onclick="funcao()" type="submit" class="btn btn-info pull-right">Atualizar</button>
+              <button type="submit" class="btn btn-info pull-right">Atualizar</button>
             </div>
 
-            <script>
-            function funcao() {
-              alert("Item atualizado!");
-            }
-            </script>
 
             <!-- box-footer  -->
           </form>
@@ -237,17 +232,16 @@
                 </tr>
               </thead>
               <tbody>
+                @foreach($manutencaos as $manutencao)
                 <tr>
-                  @foreach($manutencaos as $manutencao)
                   <td>{{ $manutencao->id }}</td>
                   <td>{{ $manutencao->problema }}</td>
                   <td>{{ $manutencao->idsituacao }}</td>
                   <td>{{ $manutencao->solucao }}</td>
                   <td>{{ $manutencao->data_envio }}</td>
                   <td>{{ $manutencao->data_retorno }}</td>
-
-                  @endforeach
                 </tr>
+                @endforeach
               </tbody>
               <tfoot>
                 <tr>
@@ -266,6 +260,7 @@
         </div>
         <!-- /.box -->
       </div>
+
 
       <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
       <script lang="javascript">

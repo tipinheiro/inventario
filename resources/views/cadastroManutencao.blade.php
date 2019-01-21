@@ -18,6 +18,7 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#manutencao" data-toggle="tab">Manutenção Equipamento</a></li>
+        <li><a href="#acessorios" data-toggle="tab">Ordem de Serviço</a></li>
 
       </ul>
       <div class="tab-content">
@@ -125,6 +126,55 @@
           </div>
         </div>
         <!-- /.tab-pane -->
+
+        <div class="tab-pane" id="acessorios">
+          <div clas="box-body">
+            <div class="box">
+              <div class="box-header">
+                <div class="input-group margin">
+                  <input type="text" class="form-control">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#inserirAcessorio">Gerar Ordem</button>
+                  </span>
+                </div>
+              </div>
+              <!-- /.box-header -->
+
+              <div class="box-body">
+
+                <table class="table table-hover" id="teste">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Número de Série</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                      <th>Localização</th>
+                      <th>Situação</th>
+                      <th>Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>ID</th>
+                      <th>Número de Série</th>
+                      <th>Tipo</th>
+                      <th>Descrição</th>
+                      <th>Localização</th>
+                      <th>Situação</th>
+                      <th>Ação</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+
+
       </div>
       <!-- /.tab-content -->
     </div>
@@ -194,7 +244,9 @@
     <!--  end Modal content-->
 
   </div>
+
 </div>
+
 
 
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
