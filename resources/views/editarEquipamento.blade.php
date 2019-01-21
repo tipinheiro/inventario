@@ -192,11 +192,11 @@
                     <tfoot>
                       <tr>
                         <th>ID</th>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>Status</th>
+                        <th>Num. Série</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Localização</th>
+                        <th>Situação</th>
                       </tr>
                     </tfoot>
                   </table>
