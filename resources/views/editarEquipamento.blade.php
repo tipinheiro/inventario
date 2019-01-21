@@ -178,7 +178,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($acessorios as $acessorio)
+                      <!-- @foreach($acessorios as $acessorio)
                       <tr>
                         <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
@@ -188,7 +188,7 @@
                         <td>{{ $acessorio->situacao }}</td>
 
                       </tr>
-                      @endforeach
+                      @endforeach -->
                     </tbody>
                     <tfoot>
                       <tr>
@@ -271,11 +271,8 @@
       <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
       <script lang="javascript">
       $( document ).ready(function() {
-        console.log('ready');
-
         var equipamentos_id = $('#idequipamento').val();
 
-        //
         $('#teste').DataTable( {
           'info'        : false,
           'lengthChange': false,
@@ -331,7 +328,17 @@
               "next":       "Próximo",
               "previous":   "Anterior"
             }
-          }
+          },
+
+          "ajax": "/acessorios/nao_associados",
+          "columns": [
+            { "data": "id" },
+            { "data": "numero_serie" },
+            { "data": "descricao" },
+            { "data": "tipoitem" },
+            { "data": "localizacao" },
+            { "data": "situacao" },
+          ]
         });
 
         $.ajaxSetup({
@@ -341,7 +348,7 @@
         });
 
         $('#example1 tbody').on('click', 'tr', function () {
-          console.log('clicou');
+          // console.log('clicou');
           // $('#teste').DataTable( {
           //     var equipamentos_id = $('#idequipamento').val();
           //     ajax: 'acessorio/4/associados'
@@ -351,8 +358,11 @@
           var data = table.row( this ).data();
 
           // document.getElementById('numserie').innerHTML=data[0]
-          var id = data[0];
+          var id = data['id'];
           var equipamentos_id = $('#idequipamento').val();
+          // console.log('acessorio id = ' + id);
+          // console.log('equipamento id = ' + equipamentos_id);
+          // console.log(data);
 
           $.ajax({
             url: '/acessorio/associar',
@@ -362,9 +372,11 @@
             dataType: 'html',
             success: function (e) {
               var v_associados = $('#teste').DataTable();
+              var nao_associados = $('#example1').DataTable();
               v_associados.ajax.reload();
+              nao_associados.ajax.reload();
               console.log(e);
-              alert(data[2]+' adicionado!' );
+              // alert(data['descricao']+' adicionado!' );
             }
           });
 
@@ -372,6 +384,7 @@
 
         $('#teste tbody').on( 'click', 'button', function () {
           var v_associados = $('#teste').DataTable();
+          var nao_associados = $('#example1').DataTable();
           console.log('desassociar id = ' + $(this).attr('value'));
           var id = $(this).attr('value');
           $.ajax({
@@ -382,7 +395,7 @@
             dataType: 'html',
 
             success: function (e) {
-
+              nao_associados.ajax.reload();
               v_associados.ajax.reload();
               console.log(e);
             }
