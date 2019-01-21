@@ -178,7 +178,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($acessorios as $acessorio)
+                      <!-- @foreach($acessorios as $acessorio)
                       <tr>
                         <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
@@ -187,7 +187,7 @@
                         <td>{{ $acessorio->localizacaos_id }}</td>
                         <td>{{ $acessorio->situacaos_id }}</td>
                       </tr>
-                      @endforeach
+                      @endforeach -->
                     </tbody>
                     <tfoot>
                       <tr>
@@ -330,7 +330,16 @@
               "next":       "Próximo",
               "previous":   "Anterior"
             }
-          }
+          },
+          "ajax": "/acessorios/nao_associados",
+          "columns": [
+            { "data": "id" },
+            { "data": "numero_serie" },
+            { "data": "tipoitem" },
+            { "data": "descricao" },
+            { "data": "localizacao" },
+            { "data": "situacao" }
+          ]
         });
 
         $.ajaxSetup({
@@ -350,7 +359,7 @@
           var data = table.row( this ).data();
 
           // document.getElementById('numserie').innerHTML=data[0]
-          var id = data[0];
+          var id = data['id'];
           var equipamentos_id = $('#idequipamento').val();
 
           $.ajax({
@@ -361,9 +370,11 @@
             dataType: 'html',
             success: function (e) {
               var v_associados = $('#teste').DataTable();
+              var nao_associados = $('#example1').DataTable();
               v_associados.ajax.reload();
+              nao_associados.ajax.reload();
               console.log(e);
-              alert(data[2]+' adicionado!' );
+              // alert(data['descricao']+' adicionado!' );
             }
           });
 
@@ -371,6 +382,7 @@
 
         $('#teste tbody').on( 'click', 'button', function () {
           var v_associados = $('#teste').DataTable();
+          var nao_associados = $('#example1').DataTable();
           console.log('desassociar id = ' + $(this).attr('value'));
           var id = $(this).attr('value');
           $.ajax({
@@ -381,7 +393,7 @@
             dataType: 'html',
 
             success: function (e) {
-
+              nao_associados.ajax.reload();
               v_associados.ajax.reload();
               console.log(e);
             }
