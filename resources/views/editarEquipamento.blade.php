@@ -178,7 +178,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($acessorios as $acessorio)
+                      <!-- @foreach($acessorios as $acessorio)
                       <tr>
                         <td>{{ $acessorio->id }}</td>
                         <td>{{ $acessorio->numero_serie }}</td>
@@ -186,18 +186,17 @@
                         <td>{{ $acessorio->tipoitem }}</td>
                         <td>{{ $acessorio->localizacao }}</td>
                         <td>{{ $acessorio->situacao }}</td>
-
                       </tr>
-                      @endforeach
+                      @endforeach -->
                     </tbody>
                     <tfoot>
                       <tr>
                         <th>ID</th>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>Status</th>
+                        <th>Num. Série</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Localização</th>
+                        <th>Situação</th>
                       </tr>
                     </tfoot>
                   </table>
@@ -341,7 +340,7 @@
         });
 
         $('#example1 tbody').on('click', 'tr', function () {
-          console.log('clicou');
+          // console.log('clicou');
           // $('#teste').DataTable( {
           //     var equipamentos_id = $('#idequipamento').val();
           //     ajax: 'acessorio/4/associados'
@@ -352,7 +351,11 @@
 
           // document.getElementById('numserie').innerHTML=data[0]
           var id = data[0];
+          var id = data['id'];
           var equipamentos_id = $('#idequipamento').val();
+          // console.log('acessorio id = ' + id);
+          // console.log('equipamento id = ' + equipamentos_id);
+          // console.log(data);
 
           $.ajax({
             url: '/acessorio/associar',
@@ -362,16 +365,46 @@
             dataType: 'html',
             success: function (e) {
               var v_associados = $('#teste').DataTable();
+              var nao_associados = $('#example1').DataTable();
               v_associados.ajax.reload();
+              nao_associados.ajax.reload();
               console.log(e);
               alert(data[2]+' adicionado!' );
+              // alert(data['descricao']+' adicionado!' );
             }
           });
 
-        });
+          $('#associar tbody').on('click', 'tr', function () {
+            console.log('clicou');
+            // $('#associado').DataTable( {
+            //     var equipamentos_id = $('#idequipamento').val();
+            //     ajax: 'acessorio/4/associados'
+            // } );
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var table = $('#associar').DataTable();
+            var data = table.row( this ).data();
+
+            // document.getElementById('numserie').innerHTML=data[0]
+            var id = data[0];
+            var equipamentos_id = $('#idequipamento').val();
+
+            $.ajax({
+              url: '/acessorio/associar',
+              type: 'POST',
+              // data: {_token: CSRF_TOKEN, id: id, equipamentos_id: equipamentos_id},
+              data: {id: id, equipamentos_id: equipamentos_id},
+              dataType: 'html',
+              success: function (e) {
+                var v_associados = $('#associado').DataTable();
+                v_associados.ajax.reload();
+                console.log(e);
+                alert(data[2]+' adicionado!' );
+              }
+            });
 
         $('#teste tbody').on( 'click', 'button', function () {
           var v_associados = $('#teste').DataTable();
+          var nao_associados = $('#example1').DataTable();
           console.log('desassociar id = ' + $(this).attr('value'));
           var id = $(this).attr('value');
           $.ajax({
@@ -382,18 +415,19 @@
             dataType: 'html',
 
             success: function (e) {
-
+              nao_associados.ajax.reload();
               v_associados.ajax.reload();
               console.log(e);
             }
           });
 
+
+          } );
+
+          //alert( 'You clicked on '+data[0]+'\'s row' );
         } );
 
-        //alert( 'You clicked on '+data[0]+'\'s row' );
-      } );
-
-      // });
+      });
       </script>
       @endif
       @stop
