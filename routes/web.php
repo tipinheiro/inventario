@@ -24,6 +24,8 @@ Route::get('/acessorio/{id}/editar', 'AcessorioController@editar');
 
 Route::get('/acessorio/{id}/associados', 'AcessorioController@associados');
 
+Route::get('/acessorios/nao_associados', 'AcessorioController@nao_associados');
+
 Route::post('/acessorio/salvar', 'AcessorioController@salvar');
 
 Route::post('/acessorio/associar', 'AcessorioController@associar');

@@ -21,6 +21,7 @@ class AcessorioController extends Controller {
   public function editar($id) {
     $acessorio = acessorios::find($id);
     return view('editarAcessorio')
+
     ->with('acessorio', $acessorio)
     ->with('situacao', situacao::All())
     ->with('localizacoes', localizacao::All())
@@ -74,9 +75,18 @@ class AcessorioController extends Controller {
     $acessorio->descricao = $request->input('descricao');
     $acessorio->tipo_items_id = $request->input('idtipo');
     $acessorio->localizacaos_id = $request->input('idlocalizacao');
-    $acessorio->situacaos_id = $request->input('idsituacao');
     $acessorio->update();
     return redirect()->to('/acessorios');
+  }
+
+  public function nao_associados() {
+    $nao_associados = DB::table('acessorios')
+    ->join('tipo_items', 'acessorios.tipo_items_id', '=', 'tipo_items.id')
+    ->join('localizacaos', 'acessorios.localizacaos_id', '=', 'localizacaos.id')
+    ->join('situacaos', 'acessorios.situacaos_id', '=', 'situacaos.id')
+    ->select('acessorios.id', 'acessorios.numero_serie', 'acessorios.descricao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao as localizacao', 'situacaos.situacao as situacao')
+    ->whereNull('equipamentos_id')->get();
+    return Response::json(['data'=>$nao_associados], 200);
   }
 
   public function associar(Request $request) {
