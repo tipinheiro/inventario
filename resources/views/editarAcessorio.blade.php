@@ -25,21 +25,16 @@
           <form role="form"  action="/acessorio/{{ $acessorio->id }}/atualizar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-3">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Número de Série:</label>
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $acessorio->numero_serie }}">
+                  <input type="text" name="numero_serie" class="form-control" value="{{ $acessorio->numero_serie }}">
                 </div>
               </div>
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $acessorio->descricao }}">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4">
+
+
+
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Localização:</label>
                   <select class="form-control" name="idlocalizacao">
@@ -49,7 +44,9 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+
+
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tipo:</label>
                   <select class="form-control" name="idtipo">
@@ -59,12 +56,20 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Situação:</label>
                   @foreach($situacao as $s)
-                  @if($s->id == $acessorio->situacaos_id) <input readonly="readonly" type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $s->situacao }}"> @endif
+                  @if($s->id == $acessorio->situacaos_id) <input readonly="readonly" type="text" name="descricao" class="form-control" value="{{ $s->situacao }}"> @endif
                   @endforeach
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>Descrição:</label>
+                  <input type="text" name="descricao" class="form-control" value="{{ $acessorio->descricao }}">
                 </div>
               </div>
             </div>

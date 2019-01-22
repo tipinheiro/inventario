@@ -25,21 +25,19 @@
           <form role="form"  action="/acessorio/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-3">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Número de Série:</label>
                   <input type="text" name="numero_serie" class="form-control" autofocus required>
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Descrição:</label>
                   <input type="text" name="descricao" class="form-control" required>
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Localização:</label>
                   <select class="form-control" name="idlocalizacao" required>
@@ -50,7 +48,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tipo:</label>
                   <select class="form-control" name="idtipo" required>
@@ -61,7 +59,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Situação:</label>
                   <select class="form-control" name="idsituacao" required>

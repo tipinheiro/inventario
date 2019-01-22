@@ -29,37 +29,37 @@
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <input id="idequipamento" type="hidden" name="idequipamento" value="{{{ $equipamento->id }}}" />
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->tombamento }}">
+                  <input type="text" name="tombamento" class="form-control" value="{{ $equipamento->tombamento }}">
                 </div>
               </div>
-              <div class="col-xs-1">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Ano:</label>
-                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask value="{{ $equipamento->ano }}">
+                  <input type="text" name="ano" class="form-control" value="{{ $equipamento->ano }}">
                 </div>
               </div>
-              <div class="col-xs-3">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->numero_serie }}">
+                  <input type="text" name="numero_serie" class="form-control" value="{{ $equipamento->numero_serie }}">
                 </div>
+              </div>
 
-              </div>
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $equipamento->descricao }}">
-                </div>
-              </div>
             </div>
 
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>Descrição:</label>
+                  <input type="text" name="descricao" class="form-control" value="{{ $equipamento->descricao }}">
+                </div>
+              </div>
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Localização:</label>
                   <select class="form-control" name="idlocalizacao">
@@ -69,7 +69,7 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tipo:</label>
                   <select class="form-control" name="idtipo">
@@ -79,12 +79,12 @@
                   </select>
                 </div>
               </div>
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Situação:</label>
 
                     @foreach($situacao as $s)
-                    @if($s->id == $equipamento->idsituacao) <input readonly="readonly" type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask value="{{ $s->situacao }}"> @endif
+                    @if($s->id == $equipamento->idsituacao) <input readonly type="text" name="situacao" class="form-control" value="{{ $s->situacao }}"> @endif
                     @endforeach
 
                 </div>
@@ -93,7 +93,7 @@
 
             <div class="box-footer">
               <a href=/equipamentos><button type="button" class="btn btn-default">Cancelar</button></a>
-              <button type="submit" class="btn btn-info pull-right">Atualizar</button>
+              <button type="submit" class="btn btn-info pull-right mb-2">Atualizar</button>
             </div>
 
 
@@ -117,7 +117,7 @@
 
               <div class="box-body">
 
-                <table class="table table-hover" id="teste">
+                  <table class="table table-hover" id="teste" style="width: 100%">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -151,7 +151,7 @@
           <!-- /.box-body -->
           <!-- Modal -->
           <div id="inserirAcessorio" class="modal fade" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="width: 60%">
 
               <!-- Modal content-->
               <div class="modal-content">
@@ -161,7 +161,7 @@
                 </div>
                 <div class="modal-body" >
                   <!-- <p>Some text in the modal.</p> -->
-                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer;">
+                  <table id="example1" class="table table-bordered table-hover" style="cursor: pointer; width:100%">
                     <thead>
                       <tr>
                         <th>ID</th>

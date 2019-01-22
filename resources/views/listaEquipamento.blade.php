@@ -27,10 +27,10 @@ use Route;
   </div>
   <div class="box-body">
     <div class="box">
-    
+
   <!-- /.box-header -->
   <div class="box-body">
-    <table id="listaequipamento" class="table table-bordered table-hover table-striped" style="cursor: pointer;">
+    <table id="listaequipamento" class="table table-bordered table-hover table-striped" style="cursor: pointer; width:100%">
       <thead>
         <tr>
           <th>ID</th>

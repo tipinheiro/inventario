@@ -25,54 +25,56 @@
           <form role="form"  action="/equipamento/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tombamento:</label>
 
-                  <input type="text" name="tombamento" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{10}" autofocus required>
+                  <input type="text" name="tombamento" class="form-control" pattern="[0-9]{10}" autofocus required>
                 </div>
               </div>
-              <div class="col-xs-1">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Ano:</label>
-                  <input type="text" name="ano" class="form-control" data-inputmask='"mask": "9999"' data-mask pattern="[0-9]{4}" required>
+                  <input type="text" name="ano" class="form-control" pattern="[0-9]{4}" required>
                 </div>
               </div>
-              <div class="col-xs-3">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Número de Série:</label>
 
-                  <input type="text" name="numero_serie" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask pattern="[0-9]{5}" required>
+                  <input type="text" name="numero_serie" class="form-control" pattern="[0-9]{5}" required>
                 </div>
 
               </div>
-              <div class="col-xs-4">
-                <div class="form-group">
-                  <label>Descrição:</label>
-                  <input type="text" name="descricao" class="form-control" data-inputmask='"mask": "(999) 999-9999"' data-mask required>
-                </div>
-              </div>
+
             </div>
 
             <div class="row">
-              <div class="col-xs-4">
+              <div class="col-sm-4">
                 <div class="form-group">
-                  <label>Localização:</label>
-                  <select class="form-control" name="idlocalizacao" required>
-                    <option></option>
-                    @foreach($localizacoes as $localizacao)
-                    <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
-                    @endforeach
-                  </select>
+                  <label>Descrição:</label>
+                  <input type="text" name="descricao" class="form-control" placeholder="Descrição"  required>
                 </div>
               </div>
-              <div class="col-xs-4">
+
+              <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tipo:</label>
                   <select class="form-control" name="idtipo" required>
                     <option></option>
                     @foreach($tipos as $tipo)
                     <option value="{{ $tipo->id }}">{{ $tipo->descricao }}</option>
+                    @endforeach
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>Localização:</label>
+                  <select class="form-control" name="idlocalizacao" required>
+                    <option></option>
+                    @foreach($localizacoes as $localizacao)
+                    <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
                     @endforeach
                   </select>
                 </div>
