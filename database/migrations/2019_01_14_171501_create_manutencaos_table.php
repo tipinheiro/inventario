@@ -23,6 +23,7 @@ class CreateManutencaosTable extends Migration
             $table->date('data_envio');
             $table->date('data_retorno')->nullable();
             $table->integer('idsituacao');
+            $table->integer('idordemservico')->nullable();
             $table->integer('idusuario');
             $table->timestamps();
             });
