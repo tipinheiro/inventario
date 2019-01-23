@@ -135,6 +135,13 @@ return [
             'label'       => 3,
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Ordem',
+            'url'         => 'ordem',
+            'icon'        => 'wrench',
+            'label'       => 0,
+            'label_color' => 'success',
+        ],
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',

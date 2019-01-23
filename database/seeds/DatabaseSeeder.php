@@ -42,6 +42,27 @@ class UserTableSeeder extends Seeder
   }
 }
 
+class OrdemSituacaoTableSeeder extends Seeder
+{
+  public function run()
+  {
+    DB::table('situacao_ordems')->insert([
+        'situacao' => 'Pendente Envio',
+    ]);
+
+    DB::table('situacao_ordems')->insert([
+        'situacao' => 'Enviado',
+    ]);
+
+    DB::table('situacao_ordems')->insert([
+        'situacao' => 'Finalizado',
+    ]);
+  }
+}
+
+
+
+
 class EquipamentoTableSeeder extends Seeder
 {
   public function run()

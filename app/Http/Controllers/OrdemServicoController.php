@@ -12,9 +12,26 @@ class OrdemServicoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     public function cadastroOrdem() {
+
+       return view('cadastroOrdemServico');
+
+     }
+
+
+    public function lista()
     {
-        //
+      $ordemServico = DB::table('ordem_servicos')
+      ->join('manutencaos', 'ordem_servicos.id', '=', 'manutencaos.idordemservico')
+      ->join('localizacaos', 'manutencaos.idlocalizacao', '=', 'localizacaos.id')
+      ->join('tipo_items', 'manutencaos.idtipo_item', '=', 'tipo_items.id')
+      ->select('manutencaos.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
+      ->get();
+
+
+      return view('listaManutencao')->with('manutencaos', $ordemServico);
+
     }
 
     /**
@@ -33,9 +50,14 @@ class OrdemServicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function salvar(Request $request)
     {
-        //
+      $ordemservico = new OrdemServico();
+      $ordemservico->termo = $request->input('termo');
+      $ordemservico->data_envio = $request->input('data_envio');
+      $ordemservico->idsituacao = 1;
+      $ordemservico->save();
+      return redirect()->to('/ordem/' . $ordemservico->id . '/editar');
     }
 
     /**
@@ -46,7 +68,7 @@ class OrdemServicoController extends Controller
      */
     public function show(OrdemServico $ordemServico)
     {
-        //
+    //
     }
 
     /**

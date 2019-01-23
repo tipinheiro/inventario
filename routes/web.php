@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('/acessorio', 'AcessorioController@cadastroAcessorio');
 
+
+
 Route::get('/acessorios', 'AcessorioController@lista');
 
 Route::get('/acessorio/{id}/editar', 'AcessorioController@editar');
@@ -42,6 +44,16 @@ Route::post('/manutencao/salvar', 'ManutencaoController@salvar');
 Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
 
 Route::get('/equipamentos', 'EquipamentoController@lista');
+
+Route::get('/ordems','OrdemServicoController@lista');
+
+Route::get('/ordem', 'OrdemServicoController@cadastroOrdem');
+
+Route::post('/ordem/salvar', 'OrdemServicoController@salvar');
+
+Route::post('/ordem/{id}/editar', 'OrdemServicoController@editar');
+
+Route::post('/ordem/{id}/atualizar', 'OrdemServicoController@atualizar');
 
 Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
 
