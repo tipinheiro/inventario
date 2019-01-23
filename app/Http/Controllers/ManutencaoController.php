@@ -56,9 +56,7 @@ where situacaos_id = 1');
     // $manutencaos = DB::select('select * from manutencaos')
     $manutencaos = DB::table('manutencaos')
     ->join('situacaos', 'manutencaos.idsituacao', '=', 'situacaos.id')
-    ->join('localizacaos', 'manutencaos.idlocalizacao', '=', 'localizacaos.id')
-    ->join('tipo_items', 'manutencaos.idtipo_item', '=', 'tipo_items.id')
-    ->select('manutencaos.*', 'situacaos.situacao', 'tipo_items.descricao as tipoitem', 'localizacaos.localizacao')
+    ->select('manutencaos.*')
     ->get();
 
     // dd($manutencaos);
@@ -140,6 +138,7 @@ where situacaos_id = 1');
     $manutencao->solucao = $request->input('solucao');
     $manutencao->data_envio = $request->input('data_envio');
     $manutencao->idsituacao = 3;
+    $manutencao->idordemservico = $request->input('idordem');
     if (!empty($request->input('idequipamento'))){
     $equipamento = Equipamento::find($request->input('idequipamento'));
     $equipamento->idsituacao = 3;
@@ -152,7 +151,7 @@ where situacaos_id = 1');
     }
     $manutencao->idusuario = Auth::user()->id;
     $manutencao->save();
-    return redirect()->to('/manutencao');
+    return redirect()->to('/ordem/' . $request->input('idordem') . '/editar');
   }
 
   public function atualizar(Request $request, $id) {

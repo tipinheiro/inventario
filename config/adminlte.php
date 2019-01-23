@@ -137,7 +137,7 @@ return [
         ],
         [
             'text'        => 'Ordem',
-            'url'         => 'ordem',
+            'url'         => 'ordems',
             'icon'        => 'wrench',
             'label'       => 0,
             'label_color' => 'success',

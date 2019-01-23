@@ -51,13 +51,13 @@ Route::get('/ordem', 'OrdemServicoController@cadastroOrdem');
 
 Route::post('/ordem/salvar', 'OrdemServicoController@salvar');
 
-Route::post('/ordem/{id}/editar', 'OrdemServicoController@editar');
+Route::get('/ordem/{id}/editar', 'OrdemServicoController@editar');
 
 Route::post('/ordem/{id}/atualizar', 'OrdemServicoController@atualizar');
 
 Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
 
-Route::get('/manutencao', 'ManutencaoController@cadastroManutencao');
+Route::get('/manutencao', 'ManutencaoController@lista');
 
 Route::get('/manutencao/{id}/imprimir', 'ManutencaoController@imprimirManutencao');
 

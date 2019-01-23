@@ -18,12 +18,11 @@
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#ordem" data-toggle="tab">Ordem de Serviço</a></li>
-        <li><a href="ordem/salvar" data-toggle="tab">Cadastro Ordem de Serviço</a></li>
       </ul>
       <div class="tab-content">
         <div class="active tab-pane" id="ordem">
           <!-- Post -->
-          <form role="form"  action="/ordem/{$ordemservico->id}" method="post">
+          <form role="form"  action="/ordem/salvar" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <div class="row">
               <div class="col-sm-4">
