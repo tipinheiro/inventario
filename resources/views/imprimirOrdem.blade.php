@@ -36,24 +36,18 @@
   </tr>
   </thead>
   <tbody>
+    @foreach($manutencaos as $manutencao)
     <tr>
-      <td> {{$manutencao->id}}</td>
-      @foreach($equipamentos as $equipamento)
-
-      <td> {{$equipamento->tombamento}}</td>
-      <td> {{$equipamento->numero_serie}}</td>
-      <td> {{$equipamento->descricao}}</td>
-      @endforeach
-      @foreach($acessorios as $acessorio)
-      <td>Não Possui</td>
-      <td> {{$acessorio->numero_serie}}</td>
-      <td> {{$acessorio->descricao}}</td>
-      @endforeach
+      <td>{{$ordem->id}}</td>
+      <td>{{$manutencao->tombamento}}</td>
+      <td>{{$manutencao->numero_serie}}</td>
+      <td>{{$manutencao->solucao}}</td>
       <td>{{$manutencao->problema}}</td>
       <td>{{$manutencao->data_envio}}</td>
       <td>{{$manutencao->data_retorno}}</td>
-    </tr>
 
+    </tr>
+  @endforeach
   </tbody>
 </table>
 

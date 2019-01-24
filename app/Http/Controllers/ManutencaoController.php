@@ -8,9 +8,7 @@ use inventario\localizacao;
 use inventario\tipo_item;
 use inventario\acessorios;
 use inventario\manutencao;
-use inventario\Relatorios\MyReport;
 use Illuminate\Support\Facades\Auth;
-use PDF;
 
 class ManutencaoController extends Controller {
 
@@ -67,34 +65,7 @@ where situacaos_id = 1');
   }
 
 
-  public function imprimirManutencao($id) {
-    $manutencao = manutencao::find($id);
-    $equipamentos = DB::table('equipamentos')->where('id', '=', $manutencao->idequipamento)->get();
-    $acessorios = DB::table('acessorios')->where('id', '=', $manutencao->idacessorio)->get();
 
-    // return \PDF::loadView('site.certificate.certificate', compact('products'))
-    //Inventario          // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
-    //             ->download('nome-arquivo-pdf-gerado.pdf');
-
-    // $pdf = PDF::loadView(view('imprimirManutencao'), $equipamentos);
-    //$pdf->loadHTML($view);
-    // return $pdf->stream('teste.pdf');
-
-    // $a = view('imprimirManutencao');
-
-    $pdf = PDF::loadView('imprimirManutencao', ['manutencao' => $manutencao, 'equipamentos' => $equipamentos, 'acessorios'=>$acessorios]);
-    return $pdf->stream();
-
-    // return PDF::loadView('imprimirManutencao', $equipamentos)->stream('teste.pdf');
-    // ->with('manutencao', $manutencao)
-    // ->with('equipamentos', $equipamentos)
-    // ->with('acessorios', $acessorios))->stream('teste.pdf');
-
-    // return view('imprimirManutencao')
-    // ->with('manutencao', $manutencao)
-    // ->with('equipamentos', $equipamentos)
-    // ->with('acessorios', $acessorios);
-  }
 
 
 
@@ -112,23 +83,6 @@ where situacaos_id = 1');
     //return view('listaEquipamento', ['manutencaos' => manutencaos]);
   }
 
-  public function relatorio() {
-    // return '<h1>Relatório de manutencaos</h1>';
-    $report = new MyReport;
-    $report->run();
-    return view("report",["report"=>$report]);
-    /*
-    $id = Request::route('id', '0');
-    $manutencao = DB::select('select * from manutencaos where id = ?', [$id]);
-
-    if (empty($manutencao))
-      return 'Equipamento inexistente.';
-
-    //return view('user.index', ['users' => $users]);
-    return view('mostraEquipamento')->with('manutencao', $manutencao[0]);
-    //return view('listaEquipamento', ['manutencaos' => manutencaos]);
-    */
-  }
 
   public function salvar(Request $request) {
     $manutencao = new manutencao();

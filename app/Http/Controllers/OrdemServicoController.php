@@ -11,6 +11,8 @@ use inventario\localizacao;
 use inventario\tipo_item;
 use inventario\acessorios;
 use inventario\manutencao;
+use inventario\Relatorios\MyReport;
+use PDF;
 
 
 class OrdemServicoController extends Controller
@@ -117,7 +119,7 @@ class OrdemServicoController extends Controller
       left join situacaos on situacaos.id = acessorios.situacaos_id
       where situacaos_id = 1');
 
-      // $ordem = OrdemServico::find($id);
+      $manutencaos = DB::table('manutencaos')->where('idordemservico','=',$id)->get();
 
       return view('editarOrdemServico')
       //->with('ordem', $ordem->id)
@@ -126,8 +128,32 @@ class OrdemServicoController extends Controller
       ->with('localizacoes', localizacao::All())
       ->with('acessorios', acessorios::All())
       ->with('equipamentos', $equipamento)
-      ->with('manutencaos', manutencao::All())
+      ->with('manutencaos', $manutencaos)
       ->with('tipos', tipo_item::All());
+    }
+
+
+    public function remover($id)
+    {
+      $manutencao = manutencao::find($id);
+      $idordem = $manutencao->idordemservico;
+      $idequipamento = $manutencao->idequipamento;
+      $idacessorio = $manutencao->idacessorio;
+
+      if (!empty($idequipamento)){
+        $equipamento = Equipamento::find($idequipamento);
+        $equipamento->idsituacao = 1;
+        $equipamento->update();
+      }
+      if (!empty($idacessorio)){
+        $acessorio = acessorios::find($idacessorio);
+        $acessorio->situacaos_id = 1;
+        $acessorio->update();
+      }
+
+
+      $manutencao->delete();
+      return redirect()->to('/ordem/' . $idordem . '/editar');
     }
 
     /**
@@ -142,6 +168,18 @@ class OrdemServicoController extends Controller
         //
     }
 
+    public function enviar(Request $request, OrdemServico $ordemServico)
+    {
+
+      $ordemservico = OrdemServico::find($id);
+      $ordemservico->idlocalizacao = $request->input('idlocalizacao');
+      $ordemservico->data_envio = $request->input('data_envio');
+      $ordemservico->idsituacao = 2;
+      $ordemservico->update();
+      return redirect()->to('/ordems');
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -152,4 +190,38 @@ class OrdemServicoController extends Controller
     {
         //
     }
+
+    public function imprimirOrdem($id) {
+      $ordem = OrdemServico::find($id);
+      // $equipamentos = DB::table('equipamentos')->where('id', '=', $manutencao->idequipamento)->get();
+      // $acessorios = DB::table('acessorios')->where('id', '=', $manutencao->idacessorio)->get();
+      $manutencaos = DB::table('manutencaos')
+      ->leftjoin('equipamentos', 'manutencaos.idequipamento', '=', 'equipamentos.id')
+      ->leftjoin('acessorios', 'manutencaos.idacessorio', '=', 'acessorios.id')
+      ->select('manutencaos.*','equipamentos.tombamento','acessorios.numero_serie')->where('idordemservico', '=', $id)->get();
+
+      // return \PDF::loadView('site.certificate.certificate', compact('products'))
+      //Inventario          // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+      //             ->download('nome-arquivo-pdf-gerado.pdf');
+
+      // $pdf = PDF::loadView(view('imprimirManutencao'), $equipamentos);
+      //$pdf->loadHTML($view);
+      // return $pdf->stream('teste.pdf');
+
+      // $a = view('imprimirManutencao');
+
+      $pdf = PDF::loadView('imprimirOrdem', ['ordem' => $ordem, 'manutencaos' => $manutencaos]);
+      return $pdf->stream();
+
+      // return PDF::loadView('imprimirManutencao', $equipamentos)->stream('teste.pdf');
+      // ->with('manutencao', $manutencao)
+      // ->with('equipamentos', $equipamentos)
+      // ->with('acessorios', $acessorios))->stream('teste.pdf');
+
+      // return view('imprimirManutencao')
+      // ->with('manutencao', $manutencao)
+      // ->with('equipamentos', $equipamentos)
+      // ->with('acessorios', $acessorios);
+    }
+
 }

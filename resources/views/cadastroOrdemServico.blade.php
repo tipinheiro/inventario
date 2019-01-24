@@ -37,7 +37,7 @@
           </div>
 
             <div class="box-footer">
-              <a href=/ordem><button type="button" class="btn btn-default">Voltar</button></a>
+              <a href=/ordems><button type="button" class="btn btn-default">Voltar</button></a>
               <button type="submit" class="btn btn-info pull-right">Salvar</button>
             </div>
             <!-- box-footer  -->

@@ -32,7 +32,7 @@ use Route;
               <table id="listaordem" class="table table-bordered table-hover table-striped" style="cursor: pointer; width:100%">
                 <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Ordem Servico</th>
                   <th>Termo</th>
                   <th>Data Envio</th>
                   <th>Situação</th>
@@ -50,7 +50,7 @@ use Route;
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>ID</th>
+                  <th>Ordem Servico</th>
                   <th>Termo</th>
                   <th>Data Envio</th>
                   <th>Situação</th>
@@ -67,13 +67,13 @@ use Route;
       <script>
   $(function () {
     $('#listaordem').DataTable({
-      "columnDefs": [
-          {
-              "targets": [ 0 ],
-              "visible": false,
-              "searchable": false
-          }
-      ],
+      // "columnDefs": [
+      //     {
+      //         "targets": [ 0 ],
+      //         "visible": false,
+      //         "searchable": false
+      //     }
+      // ],
       'info'        : false,
       'lengthChange': false,
       "language": {

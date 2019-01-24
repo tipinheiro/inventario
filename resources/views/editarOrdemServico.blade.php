@@ -32,6 +32,7 @@
             <input type="hidden" id="idacessorio" name="idacessorio">
             <input type="hidden" id="idordem" name="idordem" value={{ $ordem->id }}>
             <input type="hidden" id="idsituacao" name="idsituacao" value=3>
+            <input type="hidden" name="data_envio" class="form-control">
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
@@ -56,13 +57,6 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <label>Data de Envio:</label>
-                    <input type="date" name="data_envio" class="form-control" required>
-                  </div>
-                </div>
-
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Defeito Apresentado:</label>
@@ -103,7 +97,8 @@
                   <td>{{ $manutencao->idsituacao }}</td>
                   <td>{{ $manutencao->data_envio }}</td>
                   <td>{{ $manutencao->data_retorno }}</td>
-                  <td><input type="checkbox" id="relatorio" name="relatorio" value="{{ $manutencao->id }}"><a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir</button></a></td>
+                  <!-- <td><input type="checkbox" id="relatorio" name="relatorio" value="{{ $manutencao->id }}"><a href="/manutencao/{{ $manutencao->id }}/imprimir" target="_blank"><button class="btn btn-info pull-right glyphicon" >Imprimir</button></a></td> -->
+                  <td><a href="/ordem/{{ $manutencao->id }}/remover"><button class="btn btn-danger pull-right glyphicon" > Remover</button></a></td>
                 </tr>
                 @endforeach
               </tbody>
@@ -127,12 +122,10 @@
         <!-- /.tab-pane -->
 
         <div class="tab-pane" id="ordem">
-          <div clas="box-body">
+          <div class="box-body">
             <!--start tab-->
 
-
-
-                  <!-- Post -->
+                <!-- Post -->
                   <form role="form"  action="/ordem/atualizar" method="post">
                     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                     <div class="row">
@@ -162,10 +155,57 @@
     </div>
     <!--end start tab-->
     <!-- /input-group -->
+
   </div>
   <!-- /.box-body -->
+
+<button type="submit" data-toggle="modal" data-target="#envio" class="btn btn-success pull-right glyphicon glyphicon-ok"> Finalizar e Enviar</button>
 </div>
 <!-- /.box -->
+<div id="envio" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:40%" >
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Envio de Ordem</h4>
+      </div>
+      <div class="modal-body" >
+        <div class="row" >
+        <form role="form"  action="/ordem/{{ $ordem->id }}/imprimir" method="post">
+          <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Local para envio:</label>
+            <select class="form-control" name="idlocalizacao" required>
+              <option></option>
+              @foreach($localizacoes as $localizacao)
+              <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label>Data de Envio:</label>
+            <input type="date" name="data_envio" class="form-control" required>
+          </div>
+        </div>
+        <input type="hidden" id="idsituacao" name="idsituacao" value=1>
+        </div>
+          <div class="modal-footer">
+
+        <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok">Enviar</button>
+      </div>
+        </form>
+
+
+</div>
+</div>
+  </div>
+</div>
+
 
 <div id="inserirEquipamento" class="modal fade" role="dialog">
   <div class="modal-dialog" style="width:60%">
@@ -240,7 +280,7 @@ $( document ).ready(function() {
     'lengthChange': false,
     "language": {
       "lengthMenu": "Display _MENU_ records per page",
-      "zeroRecords": "Nothing found - sorry",
+      "zeroRecords": "Nenhum registro encontrado",
       "info": "Showing page _PAGE_ of _PAGES_",
       "infoEmpty": "No records available",
       "search": "Busca",
@@ -276,7 +316,7 @@ $( document ).ready(function() {
     'lengthChange': false,
     "language": {
       "lengthMenu": "Display _MENU_ records per page",
-      "zeroRecords": "Nothing found - sorry",
+      "zeroRecords": "Nenhum registro encontrado",
       "info": "Showing page _PAGE_ of _PAGES_",
       "infoEmpty": "No records available",
       "search": "Busca",

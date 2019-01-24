@@ -20,7 +20,7 @@ class CreateManutencaosTable extends Migration
             $table->integer('idacessorio')->nullable();
             $table->string('problema');
             $table->string('solucao')->nullable();
-            $table->date('data_envio');
+            $table->date('data_envio')->nullable();
             $table->date('data_retorno')->nullable();
             $table->integer('idsituacao');
             $table->integer('idordemservico')->nullable();

@@ -40,6 +40,7 @@ Route::post('/acessorio/{id}/remover','AcessorioController@remover');
 
 Route::post('/manutencao/salvar', 'ManutencaoController@salvar');
 
+Route::get('/ordem/{id}/remover','OrdemServicoController@remover');
 
 Route::get('/equipamento', 'EquipamentoController@cadastroEquipamento');
 
@@ -59,7 +60,7 @@ Route::get('/equipamentos/relatorio', 'EquipamentoController@relatorio');
 
 Route::get('/manutencao', 'ManutencaoController@lista');
 
-Route::get('/manutencao/{id}/imprimir', 'ManutencaoController@imprimirManutencao');
+Route::post('/ordem/{id}/imprimir', 'OrdemServicoController@imprimirOrdem');
 
 Route::get('/equipamentos/mostra/{id}', 'EquipamentoController@mostra');
 
