@@ -43,7 +43,7 @@
       <td>{{$manutencao->numero_serie}}</td>
       <td>{{$manutencao->solucao}}</td>
       <td>{{$manutencao->problema}}</td>
-      <td>{{$manutencao->data_envio}}</td>
+      <td>{{$ordem->data_envio}}</td>
       <td>{{$manutencao->data_retorno}}</td>
 
     </tr>

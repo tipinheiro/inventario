@@ -32,8 +32,8 @@ use Route;
                   <th>Equipamento</th>
                   <th>Problema</th>
                   <th>Data Envio</th>
-                  <th>Localização</th>
                   <th>Situação</th>
+                  <th>Retorno</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,7 +43,7 @@ use Route;
                     <td>{{ $manutencao->idequipamento }}</td>
                     <td>{{ $manutencao->problema }}</td>
                     <td>{{ $manutencao->data_envio }}</td>
-                    <td>{{ $manutencao->data_retorno }}</td>
+                    <td>{{ $manutencao->idsituacao }}</td>
                     <td>{{ $manutencao->data_retorno }}</td>
                   </tr>
                   @endforeach
@@ -51,11 +51,11 @@ use Route;
                 <tfoot>
                 <tr>
                   <th>ID</th>
-                  <th>Num. Série</th>
-                  <th>Descrição</th>
-                  <th>Tipo</th>
-                  <th>Localização</th>
+                  <th>Equipamento</th>
+                  <th>Problema</th>
+                  <th>Data Envio</th>
                   <th>Situação</th>
+                  <th>Retorno</th>
                 </tr>
                 </tfoot>
               </table>

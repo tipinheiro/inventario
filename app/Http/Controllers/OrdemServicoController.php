@@ -191,15 +191,38 @@ class OrdemServicoController extends Controller
         //
     }
 
-    public function imprimirOrdem($id) {
-      $ordem = OrdemServico::find($id);
+    public function imprimirOrdem(Request $request, $id) {
+      $ordemservico = OrdemServico::find($id);
+      $ordemservico->data_envio = $request->input('data_envio');
+      $ordemservico->idsituacao = 2;
+      $ordemservico->update();
+
+      DB::table('manutencaos')->where('idordemservico','=',$id)
+      ->update(['data_envio'=>$request->input('data_envio')]);
+
+
+      $manutencaos = DB::table('manutencaos')->where('idordemservico','=',$id)
+      ->whereNotNull('idequipamento')->get();
+      foreach ($manutencaos as $manutencao) {
+        DB::table('equipamentos')->where('id','=',$manutencao->idequipamento)
+        ->update(['idlocalizacao'=>$request->input('idlocalizacao')]);
+      }
+
+      $manutencaos = DB::table('manutencaos')->where('idordemservico','=',$id)
+      ->whereNotNull('idacessorio')->get();
+      foreach ($manutencaos as $manutencao) {
+        DB::table('acessorios')->where('id','=',$manutencao->idacessorio)
+        ->update(['localizacaos_id'=>$request->input('idlocalizacao')]);
+      }
+
+
+
       // $equipamentos = DB::table('equipamentos')->where('id', '=', $manutencao->idequipamento)->get();
       // $acessorios = DB::table('acessorios')->where('id', '=', $manutencao->idacessorio)->get();
       $manutencaos = DB::table('manutencaos')
       ->leftjoin('equipamentos', 'manutencaos.idequipamento', '=', 'equipamentos.id')
       ->leftjoin('acessorios', 'manutencaos.idacessorio', '=', 'acessorios.id')
       ->select('manutencaos.*','equipamentos.tombamento','acessorios.numero_serie')->where('idordemservico', '=', $id)->get();
-
       // return \PDF::loadView('site.certificate.certificate', compact('products'))
       //Inventario          // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
       //             ->download('nome-arquivo-pdf-gerado.pdf');
@@ -210,7 +233,7 @@ class OrdemServicoController extends Controller
 
       // $a = view('imprimirManutencao');
 
-      $pdf = PDF::loadView('imprimirOrdem', ['ordem' => $ordem, 'manutencaos' => $manutencaos]);
+      $pdf = PDF::loadView('imprimirOrdem', ['ordem' => $ordemservico, 'manutencaos' => $manutencaos]);
       return $pdf->stream();
 
       // return PDF::loadView('imprimirManutencao', $equipamentos)->stream('teste.pdf');

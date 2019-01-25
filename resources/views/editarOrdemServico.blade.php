@@ -49,7 +49,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label>Localização:</label>
-                    <select class="form-control" id="idlocalizacao" name="idlocalizacao" required>
+                    <select class="form-control" id="idlocalizacao" name="idlocalizacao" required readonly>
                       <option></option>
                       @foreach($localizacoes as $localizacao)
                       <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
@@ -174,7 +174,7 @@
       <div class="modal-body" >
         <div class="row" >
         <form role="form"  action="/ordem/{{ $ordem->id }}/imprimir" method="post">
-          <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
         <div class="col-sm-4">
           <div class="form-group">
             <label>Local para envio:</label>
@@ -194,13 +194,10 @@
         </div>
         <input type="hidden" id="idsituacao" name="idsituacao" value=1>
         </div>
-          <div class="modal-footer">
-
+      <div class="modal-footer">
         <button type="submit" class="btn btn-info pull-right glyphicon glyphicon-ok">Enviar</button>
       </div>
         </form>
-
-
 </div>
 </div>
   </div>
@@ -268,8 +265,6 @@
   </div>
 
 </div>
-
-
 
 <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.js') }}"></script>
 <script lang="javascript">
