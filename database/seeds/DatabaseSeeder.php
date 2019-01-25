@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
           localizacaosTableSeeder::class,
           tipo_itemTableSeeder::class,
           acessoriosTableSeeder::class,
+          OrdemSituacaoTableSeeder::class,
         ]);
         //$this->call('EquipamentoTableSeeder', 'situacaosTableSeeders');
     }

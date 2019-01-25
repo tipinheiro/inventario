@@ -33,7 +33,6 @@
               </div>
                   <input type="hidden" name="data_envio" class="form-control">
                   <input type="hidden" name="idsituacao" class="form-control">
-
           </div>
 
             <div class="box-footer">

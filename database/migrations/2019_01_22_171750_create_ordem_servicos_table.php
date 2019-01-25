@@ -17,7 +17,6 @@ class CreateOrdemServicosTable extends Migration
             $table->increments('id');
             $table->integer('termo')->nullable();
             $table->date('data_envio')->nullable();
-            $table->integer('idlocalizacao');
             $table->integer('idsituacao');
             $table->timestamps();
         });
@@ -31,5 +30,5 @@ class CreateOrdemServicosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('ordem_servicos');
-d    }
+    }
 }

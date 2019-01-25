@@ -109,6 +109,9 @@ class OrdemServicoController extends Controller
      */
     public function editar($id)
     {
+      $ordem = OrdemServico::find($id);
+      if ($ordem->idsituacao == 2)
+        return redirect()->to('/ordems');
       $equipamento = DB::select('SELECT equipamentos.id AS idequipamento, null AS idacessorio, tombamento, numero_serie, descricao, idlocalizacao, localizacao, idsituacao, situacaos.situacao  FROM equipamentos
       left join localizacaos on localizacaos.id = equipamentos.idlocalizacao
       left join situacaos on situacaos.id = equipamentos.idsituacao
