@@ -37,25 +37,21 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tombamento:</label>
-                  <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" pattern="[0-9]{5}" required>
+                  <input type="text" id="tombamento" name="tombamento" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly required>
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Descrição:</label>
-                  <input type="text" id="descricao" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly="readonly" required>
+                  <input type="text" id="descricao" name="descricao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly required>
                 </div>
               </div>
                 <div class="col-sm-4">
                   <div class="form-group">
                     <label>Localização:</label>
-                    <select class="form-control" id="idlocalizacao" name="idlocalizacao" required readonly>
-                      <option></option>
-                      @foreach($localizacoes as $localizacao)
-                      <option value="{{ $localizacao->id }}">{{ $localizacao->localizacao }}</option>
-                      @endforeach
-                    </select>
-                  </div>
+
+                  <input type="text" id="idlocalizacao" class="form-control" data-toggle="modal" data-target="#inserirEquipamento" readonly required>
+                </div>
                 </div>
               <div class="col-sm-4">
                 <div class="form-group">
